@@ -1,0 +1,187 @@
+﻿<Page
+    x:Class="MVVMStarter.Views.Domain.Student.View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:MVVMStarter.ViewModels.Domain.Student"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MasterDetailsViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="20,20,20,20"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="20,20,20,20"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+    </Page.Resources>
+
+    <!-- Outermost Grid has two columns and one row -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ListView (Master) -->
+        <ListView 
+            Grid.Row="0" Grid.Column="0"
+                ItemsSource="{Binding ItemViewModelCollection}" 
+                SelectedItem="{Binding ItemViewModelSelected, Mode=TwoWay}"
+                Visibility="{Binding ItemSelectorVisible}"
+                IsEnabled="{Binding ItemSelectorEnabled}" Background="Lavender">
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ItemViewModel">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Name="image"
+                               Source="{x:Bind ImageSource}"
+                               Visibility="{x:Bind ImageVisibility}"
+                               HorizontalAlignment="Center"
+                               Width="{x:Bind ImageSize}"
+                               Height="{x:Bind ImageSize}"
+                               Margin="5,5,5,5" />
+                        <TextBlock Text="{x:Bind Description}"
+                                   Margin="20,20,0,0"
+                                   HorizontalAlignment="Left"
+                                   FontSize="{x:Bind FontSize}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <!-- Inner Grid has one column and three rows -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <!-- Properties (Details) -->
+            <StackPanel Grid.Row="0" Grid.Column="0" Background="AntiqueWhite">
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[Name].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[Name].Enabled}"
+                                 Visibility="{Binding ViewControlStates[Name].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.Name, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[Country].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[Country].Enabled}"
+                                 Visibility="{Binding ViewControlStates[Country].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.Country, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[YearOfBirth].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[YearOfBirth].Enabled}"
+                                 Visibility="{Binding ViewControlStates[YearOfBirth].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.YearOfBirth, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[City].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[City].Enabled}"
+                                 Visibility="{Binding ViewControlStates[City].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.City, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[ZipCode].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[ZipCode].Enabled}"
+                                 Visibility="{Binding ViewControlStates[ZipCode].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.ZipCode, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" 
+                                   Text="{Binding ViewControlStates[PhotoID].Description}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" 
+                                 IsEnabled="{Binding ViewControlStates[PhotoID].Enabled}"
+                                 Visibility="{Binding ViewControlStates[PhotoID].VisibilityState}"
+                                 Text="{Binding DetailsViewModel.PhotoID, Mode=TwoWay}" />
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Buttons (Action) -->
+            <StackPanel Grid.Row="1" Grid.Column="0"
+                Orientation="Horizontal" BorderBrush="Black" BorderThickness="2,2,2,0">
+
+                <!--Create button-->
+                <Button Content="Create" Style="{StaticResource ButtonStyle}"
+                        IsEnabled="{Binding ViewControlStates[Create].Enabled}"
+                        Visibility="{Binding ViewControlStates[Create].VisibilityState}"
+                        Command="{Binding CreateCommand}"/>
+
+                <!--Update button-->
+                <Button Content="Update" Style="{StaticResource ButtonStyle}"
+                        IsEnabled="{Binding ViewControlStates[Update].Enabled}"
+                        Visibility="{Binding ViewControlStates[Update].VisibilityState}"
+                        Command="{Binding UpdateCommand}"/>
+
+                <!--Delete button-->
+                <Button Content="Delete" Style="{StaticResource ButtonStyle}"
+                        IsEnabled="{Binding ViewControlStates[Delete].Enabled}"
+                        Visibility="{Binding ViewControlStates[Delete].VisibilityState}"
+                        Command="{Binding DeleteCommand}"/>
+
+            </StackPanel>
+
+            <!-- Radio Buttons (Mode) -->
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" BorderBrush="Black" BorderThickness="2">
+
+                <RadioButton Content="Create" Style="{StaticResource RadioButtonStyle}"
+                             Command="{Binding SelectCreateCommand}"/>
+
+                <RadioButton Content="Update" Style="{StaticResource RadioButtonStyle}"
+                             Command="{Binding SelectUpdateCommand}"/>
+
+                <RadioButton Content="Delete" Style="{StaticResource RadioButtonStyle}"
+                             Command="{Binding SelectDeleteCommand}"/>
+
+                <RadioButton Content="Read" Style="{StaticResource RadioButtonStyle}" IsChecked="True" 
+                             Command="{Binding SelectReadCommand}"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+</Page>
