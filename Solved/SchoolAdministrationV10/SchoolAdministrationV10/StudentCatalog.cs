@@ -3,15 +3,24 @@ using System.Linq;
 
 namespace SchoolAdministrationV10
 {
+    /// <summary>
+    /// This class represents a collection of students,
+    /// for instance students attending a school
+    /// </summary>
     public class StudentCatalog
     {
+        #region Instance fields
         private Dictionary<int, Student> _students;
+        #endregion
 
+        #region Constructor
         public StudentCatalog()
         {
             _students = new Dictionary<int, Student>();
         }
+        #endregion
 
+        #region Properties
         /// <summary>
         /// Return the number of students in the catalog.
         /// </summary>
@@ -24,11 +33,38 @@ namespace SchoolAdministrationV10
         }
 
         /// <summary>
+        /// Returns the total test score average for ALL students in the catalog.
+        /// </summary>
+        public int TotalAverage
+        {
+            get
+            {
+                if (_students.Count == 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    int sum = 0;
+
+                    foreach (var student in _students.Values)
+                    {
+                        sum = sum + student.ScoreAverage;
+                    }
+
+                    return (sum / Count);
+                }
+            }
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
         /// Add a single student to the catalog.
         /// </summary>
         public void AddStudent(Student aStudent)
         {
-            _students.Add(aStudent.ID,aStudent);
+            _students.Add(aStudent.ID, aStudent);
         }
 
         /// <summary>
@@ -61,31 +97,7 @@ namespace SchoolAdministrationV10
             {
                 return -1;
             }
-        }
-
-        /// <summary>
-        /// Returns the total test score average for ALL students in the catalog.
-        /// </summary>
-        public int TotalAverage
-        {
-            get
-            {
-                if (_students.Count == 0)
-                {
-                    return -1;
-                }
-                else
-                {
-                    int sum = 0;
-
-                    foreach (var student in _students.Values)
-                    {
-                        sum = sum + student.ScoreAverage;
-                    }
-
-                    return (sum / Count);
-                }
-            }
-        }
+        } 
+        #endregion
     }
 }

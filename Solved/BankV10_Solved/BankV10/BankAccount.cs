@@ -6,17 +6,17 @@
         private double _balance;
         #endregion
 
-        #region Properties
-        public double Balance
-        {
-            get { return _balance; }
-        }
-        #endregion
-
         #region Constructor
         public BankAccount()
         {
             _balance = 0.0;
+        }
+        #endregion
+
+        #region Properties
+        public double Balance
+        {
+            get { return _balance; }
         }
         #endregion
 

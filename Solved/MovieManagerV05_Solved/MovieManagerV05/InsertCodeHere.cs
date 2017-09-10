@@ -8,7 +8,7 @@ namespace MovieManagerV05
         {
             // The FIRST line of code should be BELOW this line
 
-            // These are just some examples of data your could
+            // These are just some examples of data you could
             // choose to represent for a movie
 
             string title = "Terminator 2";

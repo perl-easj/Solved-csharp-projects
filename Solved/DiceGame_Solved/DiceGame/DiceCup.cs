@@ -1,10 +1,16 @@
 ﻿namespace DiceGame
 {
+    /// <summary>
+    /// This class represents a dice cup containing two dice.
+    /// </summary>
     public class DiceCup
     {
+        #region Instance fields
         private Die _die1;
         private Die _die2;
+        #endregion
 
+        #region Constructor
         public DiceCup()
         {
             // VERY IMPORTANT! When we have instance fields of a class type,
@@ -13,19 +19,21 @@
             _die1 = new Die();
             _die2 = new Die();
         }
+        #endregion
 
-        // Implement a property TotalValue: the sum of the values of the dice in the cup
+        #region Properties
         public int TotalValue
         {
-            get { return (_die1.Value + _die2.Value); }
+            get { return (_die1.FaceValue + _die2.FaceValue); }
         }
+        #endregion
 
-
-        // Implement a method Shake: all the dice in the cup should be rolled
+        #region Methods
         public void Shake()
         {
             _die1.Roll();
             _die2.Roll();
-        }
+        } 
+        #endregion
     }
 }

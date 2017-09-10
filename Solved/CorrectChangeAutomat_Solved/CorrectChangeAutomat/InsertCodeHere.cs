@@ -42,7 +42,7 @@ namespace CorrectChangeAutomat
             int noOf10 = HowManyUnitsBack(amountToPayBack, 10);
             amountToPayBack = amountToPayBack - noOf10 * 10;
 
-            Console.WriteLine("100-kr sedler: {0} 10-kr mønter: {1} 1-kr mønter: {2}", noOf100, noOf10, amountToPayBack);
+            Console.WriteLine($"100-kr sedler: {noOf100} 10-kr mønter: {noOf10} 1-kr mønter: {amountToPayBack}");
 
             // The LAST line of code should be ABOVE this line
 

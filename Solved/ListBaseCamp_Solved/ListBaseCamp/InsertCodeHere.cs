@@ -15,21 +15,21 @@ namespace ListBaseCamp
             listOfInt.Add(9);
 
             // Case 1
-            // Console.WriteLine("Case 1: Element with index 1 is {0}", listOfInt[1]);
+            Console.WriteLine($"Case 1: Element with index 1 is {listOfInt[1]}");
 
             // Case 2
-            // Console.WriteLine("Case 2: List contains {0} elements", listOfInt.Count);
+            Console.WriteLine($"Case 2: List contains {listOfInt.Count} elements");
 
             listOfInt.Add(5);
             listOfInt.Add(22);
 
             // Case 3
-            // Console.WriteLine("Case 3: Element with index 3 is {0}", listOfInt[3]);
+            Console.WriteLine($"Case 3: Element with index 3 is {listOfInt[3]}");
 
             listOfInt.RemoveAt(0);
 
             // Case 4
-            // Console.WriteLine("Case 4: Element with index 3 is {0}", listOfInt[3]);
+            Console.WriteLine($"Case 4: Element with index 3 is {listOfInt[3]}");
 
 
 
@@ -57,7 +57,7 @@ namespace ListBaseCamp
             {
                 sum = sum + i;
             }
-            Console.WriteLine("Sum is {0}",sum);
+            Console.WriteLine($"Sum is {sum}");
             Console.WriteLine("End of Case 6");
 
 
@@ -74,7 +74,7 @@ namespace ListBaseCamp
                     smallest = i;
                 }
             }
-            Console.WriteLine("Smallest value is {0}", smallest);
+            Console.WriteLine($"Smallest value is {smallest}");
             Console.WriteLine("End of Case 7");
 
 

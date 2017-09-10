@@ -35,8 +35,8 @@ namespace WebShopV05
 
             double totalPrice = netPriceForAllItems + taxForAllItems + shippingForAllItems + creditCardFeeForAllItems;
 
-            Console.WriteLine("You ordered {0} books, {1} DVDs and {2} games", noOfBooksInOrder, noOfDVDsInOrder, noOfGamesInOrder);
-            Console.WriteLine("Total cost including tax, shipping and credit card fee: {0} kr.", totalPrice);
+            Console.WriteLine($"You ordered {noOfBooksInOrder} books, {noOfDVDsInOrder} DVDs and {noOfGamesInOrder} games");
+            Console.WriteLine($"Total cost including tax, shipping and credit card fee: {totalPrice} kr.");
 
 
             // EXTRA (Step 4) - Calculation of discount
@@ -54,7 +54,7 @@ namespace WebShopV05
 
             // Uncomment the below lines to see price with discount
             // totalPrice = totalPrice * (1 - 0.05*(discount5 + discount10));
-            // Console.WriteLine("Total cost with discount: {0} kr.", totalPrice);
+            // Console.WriteLine($"Total cost with discount: {totalPrice} kr.");
 
             // The LAST line of code should be ABOVE this line
         }

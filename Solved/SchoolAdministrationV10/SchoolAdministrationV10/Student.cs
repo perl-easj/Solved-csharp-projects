@@ -3,12 +3,28 @@ using System.Collections.Generic;
 
 namespace SchoolAdministrationV10
 {
+    /// <summary>
+    /// This class represents a student, 
+    /// with an id, name and a set of test scores
+    /// </summary>
     public class Student
     {
+        #region Instance fields
         private int _id;
         private string _name;
         private Dictionary<string, int> _testScores;
+        #endregion
 
+        #region Constructor
+        public Student(int id, String name)
+        {
+            _id = id;
+            _name = name;
+            _testScores = new Dictionary<string, int>();
+        }
+        #endregion
+
+        #region Properties
         public int ID
         {
             get { return _id; }
@@ -17,21 +33,6 @@ namespace SchoolAdministrationV10
         public string Name
         {
             get { return _name; }
-        }
-
-        public Student(int id, string name)
-        {
-            _id = id;
-            _name = name;
-            _testScores = new Dictionary<string, int>();
-        }
-
-        /// <summary>
-        /// Insert a single test result
-        /// </summary>
-        public void AddTestResult(string courseName, int score)
-        {
-            _testScores.Add(courseName, score);
         }
 
         /// <summary>
@@ -44,20 +45,31 @@ namespace SchoolAdministrationV10
             {
                 if (_testScores.Count == 0)
                 {
-                    return -1;
+                    return 0;
                 }
                 else
                 {
                     int sum = 0;
 
-                    foreach (var testScore in _testScores.Values)
+                    foreach (var kvp in _testScores)
                     {
-                        sum = sum + testScore;
+                        sum = sum + kvp.Value;
                     }
 
                     return (sum / _testScores.Count);
                 }
             }
         }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Insert a single test result
+        /// </summary>
+        public void AddTestResult(String courseName, int score)
+        {
+            _testScores.Add(courseName, score);
+        }
+        #endregion
     }
 }

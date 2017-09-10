@@ -1,9 +1,19 @@
 ﻿namespace WeatherStationV10
 {
+    /// <summary>
+    ///  Simple barometer, measuring pressure in hPa (hectopascal)
+    /// </summary>
     public class Barometer
     {
         #region Instance fields
         private double _pressureInHPa;
+        #endregion
+
+        #region Constructor
+        public Barometer()
+        {
+            _pressureInHPa = 1013.0;
+        }
         #endregion
 
         #region Properties
@@ -39,17 +49,6 @@
                 }
             }
         }
-        #endregion
-
-        #region Constructor
-        public Barometer()
-        {
-            _pressureInHPa = 1013.0;
-        }
-        #endregion
-
-        #region Methods
-        // No methods here, move along...
         #endregion
     }
 }

@@ -12,10 +12,10 @@ namespace StaticExamples
             List<int> aList = new List<int> {23, 86, 51, 11, 39};
 
             int smallest = ListMethods.FindSmallestNumber(aList);
-            Console.WriteLine("The smallest number in the list is : {0}", smallest);
+            Console.WriteLine($"The smallest number in the list is : {smallest}");
 
             int average = ListMethods.FindAverage(aList);
-            Console.WriteLine("The average of the list is : {0}", average);
+            Console.WriteLine($"The average of the list is : {average}");
 
             Car car1 = new Car("ABC 123",15000);
             Car car2 = new Car("DEF 456", 22000);

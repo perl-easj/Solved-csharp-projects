@@ -4,8 +4,13 @@ using System.Linq;
 
 namespace WebShopV10
 {
+    /// <summary>
+    /// This class represent an order, containing a
+    /// number of items (only represented by price)
+    /// </summary>
     public class OrderV3
     {
+        #region Constants
         private const double StateTaxHighLimitAmount = 40.0;
         private const double StateTaxHighPercentage = 10.00;
         private const double StateTaxLowPercentage = 8.00;
@@ -14,14 +19,20 @@ namespace WebShopV10
         private const int ShippingHighCostLimitItems = 3;
         private const double EUTaxPercentage = 2.00;
         private const double EUTaxMinimumAmount = 1.00;
+        #endregion
 
+        #region Instance fields
         private List<double> _itemPriceList;
+        #endregion
 
+        #region Constructor
         public OrderV3(List<double> itemPriceList)
         {
             _itemPriceList = itemPriceList;
         }
+        #endregion
 
+        #region Properties
         public double TotalOrderPrice
         {
             get
@@ -33,8 +44,10 @@ namespace WebShopV10
                 return _itemPriceList.Sum();
             }
         }
+        #endregion
 
-        public void ForEachItem(Action<int> action)
+        #region Methods
+        private void ForEachItem(Action<int> action)
         {
             for (int index = 0; index < _itemPriceList.Count; index++)
             {
@@ -66,6 +79,7 @@ namespace WebShopV10
             AddAmount(index, index < ShippingHighCostLimitItems
                            ? ShippingHighCost
                            : ShippingLowCost);
-        }
+        } 
+        #endregion
     }
 }

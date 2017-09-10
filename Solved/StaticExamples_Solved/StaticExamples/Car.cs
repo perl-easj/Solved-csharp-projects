@@ -2,25 +2,42 @@
 
 namespace StaticExamples
 {
+    /// <summary>
+    /// A very simple representation of a car
+    /// </summary>
     public class Car
     {
+        #region Static instance fields // Added
         private static int _noOfCarsObjectsCreated = 0;
         private static int _noOfCallsToLicensePlate = 0;
-        private static int _noOfCallsToPrice = 0;
+        private static int _noOfCallsToPrice = 0; 
+        #endregion
 
+        #region Instance fields
         private string _licensePlate;
         private int _price;
+        #endregion
 
+        #region Constructor
+        public Car(string licensePlate, int price)
+        {
+            _noOfCarsObjectsCreated++;
+            _licensePlate = licensePlate;
+            _price = price;
+        }
+        #endregion
+
+        #region Properties
         public string LicensePlate
         {
             get
             {
-                _noOfCallsToLicensePlate++;
+                _noOfCallsToLicensePlate++; // Added
                 return _licensePlate;
             }
             set
             {
-                _noOfCallsToLicensePlate++;
+                _noOfCallsToLicensePlate++; // Added
                 _licensePlate = value;
             }
         }
@@ -29,29 +46,24 @@ namespace StaticExamples
         {
             get
             {
-                _noOfCallsToPrice++;
+                _noOfCallsToPrice++; // Added
                 return _price;
             }
             set
             {
-                _noOfCallsToPrice++;
+                _noOfCallsToPrice++; // Added
                 _price = value;
             }
         }
+        #endregion
 
-        public static void PrintUsageStatistics()
+        #region Static methods
+        public static void PrintUsageStatistics() // Added
         {
-            Console.WriteLine("Cars objects created : {0}", _noOfCarsObjectsCreated);
-            Console.WriteLine("Use of LicensePlate property: {0}", _noOfCallsToLicensePlate);
-            Console.WriteLine("Use of Price property: {0}", _noOfCallsToPrice);
-        }
-
-
-        public Car(string licensePlate, int price)
-        {
-            _noOfCarsObjectsCreated++;
-            _licensePlate = licensePlate;
-            _price = price;
-        }
+            Console.WriteLine($"Cars objects created : {_noOfCarsObjectsCreated}");
+            Console.WriteLine($"Use of LicensePlate property: {_noOfCallsToLicensePlate}");
+            Console.WriteLine($"Use of Price property: {_noOfCallsToPrice}");
+        } 
+        #endregion
     }
 }

@@ -7,7 +7,11 @@ namespace CalculationSimulation
     /// </summary>
     class Cache
     {
+        #region Instance fields
         private int[,] cacheValues;
+        #endregion
+
+        #region Constructor
         public Cache(int xDimension, int yDimension)
         {
             // Create a cache of results with the specified dimensions
@@ -21,7 +25,9 @@ namespace CalculationSimulation
                 }
             }
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Look up the value stored in cell [x,y]
         /// </summary>
@@ -36,6 +42,7 @@ namespace CalculationSimulation
         public void Insert(int x, int y, int value)
         {
             cacheValues[x, y] = value;
-        }
+        } 
+        #endregion
     }
 }
