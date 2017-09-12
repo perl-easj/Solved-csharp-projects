@@ -1,5 +1,8 @@
 ﻿namespace RolePlayV23
 {
+    /// <summary>
+    /// This class represents the "damager" character type.
+    /// </summary>
     class Damager : Character
     {
         public Damager(string name, int hitPoints, int minDamage, int maxDamage) 

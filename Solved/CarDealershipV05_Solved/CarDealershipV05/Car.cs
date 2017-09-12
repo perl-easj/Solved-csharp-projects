@@ -1,19 +1,27 @@
 ﻿namespace CarDealershipV05
 {
+    /// <summary>
+    /// This class represents a car, for instance
+    /// a car sold in a car dealership
+    /// </summary>
     public class Car
     {
+        #region Instance fields
         private string _licensePlate;
         private string _brand;
         private string _model;
         private int _price;
+        #endregion
 
+        #region Constructor
         public Car(string licensePlate, string brand, string model, int price)
         {
             _licensePlate = licensePlate;
             _brand = brand;
             _model = model;
             _price = price;
-        }
+        } 
+        #endregion
 
         #region Properties
         public string LicensePlate
@@ -37,6 +45,7 @@
         }
         #endregion
 
+        #region Overrides
         public override string ToString()
         {
             return LicensePlate + ": A " + Brand + " " + Model + ", price is " + Price;
@@ -73,6 +82,7 @@
         public override int GetHashCode()
         {
             return LicensePlate?.GetHashCode() ?? 0;
-        }
+        } 
+        #endregion
     }
 }

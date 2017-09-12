@@ -15,7 +15,7 @@ namespace FilteringV10
             Console.WriteLine("Filter odd numbers:");
             foreach (var value in filteredValues)
             {
-                Console.Write(" {0} ",value);
+                Console.Write($" {value} ");
             }
             Console.WriteLine();
 
@@ -23,7 +23,7 @@ namespace FilteringV10
             Console.WriteLine("Filter below 20:");
             foreach (var value in filteredValues)
             {
-                Console.Write(" {0} ", value);
+                Console.Write($" {value} ");
             }
             Console.WriteLine();
 
@@ -31,7 +31,7 @@ namespace FilteringV10
             Console.WriteLine("Filter divisible by 9:");
             foreach (var value in filteredValues)
             {
-                Console.Write(" {0} ", value);
+                Console.Write($" {value} ");
             }
             Console.WriteLine();
 
@@ -45,14 +45,14 @@ namespace FilteringV10
             Console.WriteLine("All filters:");
             foreach (var value in filteredValues)
             {
-                Console.Write(" {0} ", value);
+                Console.Write($" {value} ");
             }
             Console.WriteLine();
 
 
             // ...and now some slightly weird stuff...
             Console.WriteLine("Filtering using a function parameter:");
-            Filter.FilterUsingFunctionArgument(values, value => (value % 2) != 0).ForEach(value => Console.Write(" {0} ", value));
+            Filter.FilterUsingFunctionArgument(values, value => (value % 2) != 0).ForEach(value => Console.Write($" {value} "));
             Console.WriteLine();
 
             // The LAST line of code should be ABOVE this line

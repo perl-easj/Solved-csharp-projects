@@ -10,15 +10,15 @@
         {
         }
 
-        public override bool PayoutBonus
-        {
-            get { return _hoursWorkedThisMonth >= MinimumHoursWorkedForBonus; }
-        }
-
         public int HoursWorkedThisMonth
         {
             get { return _hoursWorkedThisMonth; }
             set { _hoursWorkedThisMonth = value; }
+        }
+
+        public override bool PayoutBonus
+        {
+            get { return _hoursWorkedThisMonth >= MinimumHoursWorkedForBonus; }
         }
     }
 }

@@ -10,15 +10,15 @@
         {
         }
 
-        public override bool PayoutBonus
-        {
-            get { return _performanceRatingThisMonth >= MinimumRatingForBonus; }
-        }
-
         public int PerformanceRatingThisMonth
         {
             get { return _performanceRatingThisMonth; }
             set { _performanceRatingThisMonth = value; }
+        }
+
+        public override bool PayoutBonus
+        {
+            get { return _performanceRatingThisMonth >= MinimumRatingForBonus; }
         }
     }
 }

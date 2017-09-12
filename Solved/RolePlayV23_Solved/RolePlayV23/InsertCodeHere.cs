@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RolePlayV23
+﻿namespace RolePlayV23
 {
     public class InsertCodeHere
     {

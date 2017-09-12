@@ -1,5 +1,8 @@
 ﻿namespace RolePlayV23
 {
+    /// <summary>
+    /// This class represents the "defender" character type.
+    /// </summary>
     class Defender : Character
     {
         public Defender(string name, int hitPoints, int minDamage, int maxDamage) 
