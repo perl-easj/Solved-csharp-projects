@@ -54,7 +54,7 @@ namespace GenericsDogsAndCircles
 
         public override string ToString()
         {
-            return Name + " is " + Height + " cm tall, and weighs " + Weight + " kgs.";
+            return $"{Name} is {Height} cm tall, and weighs {Weight} kgs.";
         } 
         #endregion
     }

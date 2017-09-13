@@ -59,7 +59,7 @@ namespace LINQDrink
             Console.WriteLine("----------------------------------------------------------------------");
             foreach (var element in queryResult3)
             {
-                Console.WriteLine(element.Name + " contains " + element.AlcoholicPartAmount + " cl. " + element.AlcoholicPart);
+                Console.WriteLine($"{element.Name} contains {element.AlcoholicPartAmount} cl. {element.AlcoholicPart}");
             }
             Console.WriteLine();
             #endregion
@@ -84,7 +84,7 @@ namespace LINQDrink
 
             Console.WriteLine("#5 - Total amount of alcohol in the drinks");
             Console.WriteLine("------------------------------------------");
-            Console.WriteLine(queryResult5 + " cl.");
+            Console.WriteLine($"{queryResult5} cl.");
             Console.WriteLine();
             #endregion
 
@@ -95,7 +95,7 @@ namespace LINQDrink
 
             Console.WriteLine("#6 - Average amount of alcohol in drinks with alcohol");
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine(queryResult6 + " cl.");
+            Console.WriteLine($"{queryResult6} cl.");
             Console.WriteLine();
             #endregion
 
@@ -108,11 +108,11 @@ namespace LINQDrink
             Console.WriteLine("--------------------------------------------------------------------");
             foreach (var group in queryResult7)
             {
-                Console.WriteLine("Drinks with " + group.Key);
+                Console.WriteLine($"Drinks with {group.Key}");
                 Console.WriteLine("-------------------------");
                 foreach (var element in group)
                 {
-                    Console.WriteLine(element.Name + "  (" + element.AlcoholicPartAmount + " cl.)");
+                    Console.WriteLine($"{element.Name}  ({element.AlcoholicPartAmount} cl.)");
                 }
                 Console.WriteLine();
             }
