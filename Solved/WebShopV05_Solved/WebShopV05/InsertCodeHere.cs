@@ -21,19 +21,21 @@ namespace WebShopV05
 
             double taxPercentage = 10.0;
             double creditCardFeePercentage = 2.0;
+            double shippingForAllItems = 49;
 
+            double netPriceForBooks = netPriceBook * noOfBooksInOrder;
+            double netPriceForDVDs = netPriceDVD * noOfDVDsInOrder;
+            double netPriceForGames = netPriceGame * noOfGamesInOrder;
 
-            double netPriceForAllItems = netPriceBook * noOfBooksInOrder + netPriceDVD * noOfDVDsInOrder +
-                                         netPriceGame * noOfGamesInOrder;
+            double netPriceForAllItems = netPriceForBooks + netPriceForDVDs + netPriceForGames;
 
             double taxForAllItems = netPriceForAllItems * (taxPercentage / 100);
-
-            double shippingForAllItems = 49;
 
             double creditCardFeeForAllItems = (netPriceForAllItems + taxForAllItems + shippingForAllItems) *
                                               (creditCardFeePercentage / 100);
 
-            double totalPrice = netPriceForAllItems + taxForAllItems + shippingForAllItems + creditCardFeeForAllItems;
+            double totalPrice = netPriceForAllItems + taxForAllItems + 
+                                shippingForAllItems + creditCardFeeForAllItems;
 
             Console.WriteLine($"You ordered {noOfBooksInOrder} books, {noOfDVDsInOrder} DVDs and {noOfGamesInOrder} games");
             Console.WriteLine($"Total cost including tax, shipping and credit card fee: {totalPrice} kr.");
