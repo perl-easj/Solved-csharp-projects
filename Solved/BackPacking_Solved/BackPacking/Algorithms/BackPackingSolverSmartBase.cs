@@ -4,11 +4,13 @@ using BackPacking.Item;
 namespace BackPacking.Algorithms
 {
     /// <summary>
-    /// This class contains a "greedy" algorithm for backpacking
+    /// This class contains a greedy algorithm for backpacking, i.e.
+    /// continually pick the "best" item from the vault, until no
+    /// more items can be picked.
     /// </summary>
-    public class BackPackingSolverSmart : BackPackingSolverBase
+    public abstract class BackPackingSolverSmartBase : BackPackingSolverBase
     {
-        public BackPackingSolverSmart(List<BackPackItem> items, double capacity) 
+        protected BackPackingSolverSmartBase(List<BackPackItem> items, double capacity) 
             : base(items, capacity)
         {
         }
@@ -37,22 +39,23 @@ namespace BackPacking.Algorithms
         /// "Best" is defined as the item for which it holds that:
         ///   1) The weight of the item does not exceed the capacity.
         ///   2) No other item (for which 1) holds) has a higher 
-        ///      value/weight ratio.
+        ///      "actual item value". The calculation of "actual item value"
+        ///      is deferred to derived classes.
         /// </summary>
         private string PickBestItemFromVault(double capacityLeft)
         {
-            double bestRatio = 0;
+            double bestActualItemValue = 0;
             BackPackItem bestItem = null;
 
             foreach (var item in TheVault.Items)
             {
                 if (item.Weight <= capacityLeft)
                 {
-                    double ratio = item.Value / item.Weight;
+                    double candidateActualItemValue = ActualItemValue(item);
 
-                    if (ratio > bestRatio)
+                    if (candidateActualItemValue > bestActualItemValue)
                     {
-                        bestRatio = ratio;
+                        bestActualItemValue = candidateActualItemValue;
                         bestItem = item;
                     }
                 }
@@ -60,5 +63,11 @@ namespace BackPacking.Algorithms
 
             return (bestItem != null) ? bestItem.Description : string.Empty;
         }
+
+        /// <summary>
+        /// A derived class can implement this method, to provide a 
+        /// specific definition of "actual item value"
+        /// </summary>
+        protected abstract double ActualItemValue(BackPackItem item);
     }
 }

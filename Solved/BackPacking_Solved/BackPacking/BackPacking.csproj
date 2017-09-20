@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\BackPackingSolverSmart.cs" />
+    <Compile Include="Algorithms\BackPackingSolverSmartAbsoluteItemValue.cs" />
+    <Compile Include="Algorithms\BackPackingSolverSmartBase.cs" />
+    <Compile Include="Algorithms\BackPackingSolverSmartFavorSmallItems.cs" />
+    <Compile Include="Algorithms\BackPackingSolverSmartValueWeightRatio.cs" />
     <Compile Include="Containers\BackPack.cs" />
     <Compile Include="Algorithms\BackPackingSolverBase.cs" />
     <Compile Include="Algorithms\BackPackingSolverStupid.cs" />

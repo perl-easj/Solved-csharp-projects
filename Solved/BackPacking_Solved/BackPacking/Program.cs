@@ -30,15 +30,29 @@ namespace BackPacking
 
             Console.WriteLine("Outcome of using BackPackingSolverStupid:");
             Console.WriteLine();
-            IBackPackingSolver solverStupid = new BackPackingSolverStupid(items, 15.0);
-            solverStupid.Run();
+            IBackPackingSolver solver = new BackPackingSolverStupid(items, 15.0);
+            solver.Run();
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("Outcome of using BackPackingSolverSmart:");
+            Console.WriteLine("Outcome of using BackPackingSolverSmartAbsoluteItemValue:");
             Console.WriteLine();
-            IBackPackingSolver solverSmart = new BackPackingSolverSmart(items, 15.0);
-            solverSmart.Run();
+            solver = new BackPackingSolverSmartAbsoluteItemValue(items, 15.0);
+            solver.Run();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Outcome of using BackPackingSolverSmartValueWeightRatio:");
+            Console.WriteLine();
+            solver = new BackPackingSolverSmartValueWeightRatio(items, 15.0);
+            solver.Run();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Outcome of using BackPackingSolverSmartFavorSmallItems:");
+            Console.WriteLine();
+            solver = new BackPackingSolverSmartFavorSmallItems(items, 15.0);
+            solver.Run();
             Console.WriteLine();
             Console.WriteLine();
 
