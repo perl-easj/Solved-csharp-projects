@@ -45,7 +45,7 @@ namespace SchoolAdministrationV10
             {
                 if (_testScores.Count == 0)
                 {
-                    return 0;
+                    return -1;
                 }
                 else
                 {
