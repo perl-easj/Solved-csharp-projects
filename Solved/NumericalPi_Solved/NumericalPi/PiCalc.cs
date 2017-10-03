@@ -22,10 +22,15 @@ namespace NumericalPi
             int insideUnitCircleC = 0;
             int insideUnitCircleD = 0;
 
-            Task taskA = Task.Run(() => { insideUnitCircleA = Iterate(iterations / 4); });
-            Task taskB = Task.Run(() => { insideUnitCircleB = Iterate(iterations / 4); });
-            Task taskC = Task.Run(() => { insideUnitCircleC = Iterate(iterations / 4); });
-            Task taskD = Task.Run(() => { insideUnitCircleD = Iterate(iterations / 4); });
+            Task taskA = new Task(() => { insideUnitCircleA = Iterate(iterations / 4); });
+            Task taskB = new Task(() => { insideUnitCircleB = Iterate(iterations / 4); });
+            Task taskC = new Task(() => { insideUnitCircleC = Iterate(iterations / 4); });
+            Task taskD = new Task(() => { insideUnitCircleD = Iterate(iterations / 4); });
+
+            taskA.Start();
+            taskB.Start();
+            taskC.Start();
+            taskD.Start();
 
             Task.WaitAll(taskA, taskB, taskC, taskD);
 
