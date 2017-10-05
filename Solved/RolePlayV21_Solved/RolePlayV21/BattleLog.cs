@@ -35,8 +35,6 @@ namespace RolePlayV21
             {
                 Console.WriteLine(s);
             }
-            Console.WriteLine();
-            Console.WriteLine();
         }
 
         /// <summary>

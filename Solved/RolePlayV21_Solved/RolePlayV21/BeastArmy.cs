@@ -39,8 +39,30 @@ namespace RolePlayV21
         }
 
         /// <summary>
-        /// DealDamage is defined as: the total damage dealt by 
-        /// all non-dead members of the army
+        /// Returns the names of all Beasts that are currently alive
+        /// </summary>
+        public List<string> BeastsAlive
+        {
+            get
+            {
+                List<string> alive = new List<string>();
+
+                foreach (Beast aBeast in _army)
+                {
+                    if (!aBeast.Dead)
+                    {
+                        alive.Add(aBeast.Name);
+                    }
+                }
+
+                return alive;
+            }
+        }
+
+        /// <summary>
+        /// DealDamage is defined as: 
+        /// The total damage dealt by all
+        /// non-dead members of the army
         /// </summary>
         public int DealDamage()
         {
@@ -58,8 +80,9 @@ namespace RolePlayV21
         }
 
         /// <summary>
-        /// ReceiveDamage is defined as: the first non-dead 
-        /// beast in the list receives all of the damage
+        /// ReceiveDamage is defined as: 
+        /// The first non-dead beast in the list 
+        /// receives all of the damage
         /// </summary>
         public void ReceiveDamage(int damage)
         {
