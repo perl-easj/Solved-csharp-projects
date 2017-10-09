@@ -3,25 +3,27 @@ using System.Collections.Generic;
 
 namespace TestExampleC
 {
-    public class CurrencyExchange
+    public class CurrencyExchange : ICurrencyExchange
     {
         private Dictionary<string, double> _exchangeRates;
+        private ICurrencyCheck _currencyCheck;
 
-        public CurrencyExchange()
+        public CurrencyExchange(ICurrencyCheck currencyCheck)
         {
             _exchangeRates = new Dictionary<string, double>();
+            _currencyCheck = currencyCheck;
         }
 
         public void SetExchangeRate(string currencyCross, double exchangeRate)
         {
-            if (!IsLegalCurrencyCross(currencyCross))
+            if (!_currencyCheck.IsValidCurrencyCross(currencyCross))
             {
-                throw new ArgumentException(currencyCross + " is not a legal currency cross");
+                throw new ArgumentException(currencyCross + " is not a valid currency cross");
             }
 
             if (exchangeRate <= 0)
             {
-                throw new ArgumentException(exchangeRate + " is not a legal exchange rate");
+                throw new ArgumentException(exchangeRate + " is not a valid exchange rate");
             }
 
             _exchangeRates[currencyCross] = exchangeRate;
@@ -29,9 +31,9 @@ namespace TestExampleC
 
         public double DoExchange(string currencyCross, double amount)
         {
-            if (!IsLegalCurrencyCross(currencyCross))
+            if (!_currencyCheck.IsValidCurrencyCross(currencyCross))
             {
-                throw new ArgumentException(currencyCross + " is not a legal currency cross");
+                throw new ArgumentException(currencyCross + " is not a valid currency cross");
             }
 
             if (!_exchangeRates.ContainsKey(currencyCross))
@@ -41,25 +43,10 @@ namespace TestExampleC
 
             if (amount <= 0)
             {
-                throw new ArgumentException(amount + " is not a legal amount");
+                throw new ArgumentException(amount + " is not a valid amount");
             }
 
             return _exchangeRates[currencyCross] * amount;
-        }
-
-        private bool IsLegalCurrencyCross(string currencyCross)
-        {
-            // A currency cross must
-            // 1) Not be null, empty or only contains spaces
-            // 2) Be exactly six characters long
-            // 3) Be between two different currencies, i.e. USDUSD is not legal.
-            //
-            if (!string.IsNullOrWhiteSpace(currencyCross) && currencyCross.Length == 6)
-            {
-                return currencyCross.Substring(0,3) != currencyCross.Substring(3,3);
-            }
-
-            return false;
         }
     }
 }

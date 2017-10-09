@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyCheck.cs" />
     <Compile Include="CurrencyExchange.cs" />
+    <Compile Include="ICurrencyCheck.cs" />
+    <Compile Include="ICurrencyExchange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
