@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LibraryV11
 {
@@ -20,31 +19,43 @@ namespace LibraryV11
         }
         #endregion
 
+        #region Properties
+        public int Count
+        {
+            get { return _books.Count; }
+        }
+        #endregion
+
         #region Methods
+        /// <summary>
+        /// This method adds a single Book object 
+        /// to the List of books 
+        /// </summary>
         public void AddBook(Book aBook)
         {
             _books.Add(aBook.ISBN, aBook);
         }
 
-        public void PrintAllBooks()
-        {
-            foreach (var bookKeyValue in _books)
-            {
-                Console.WriteLine(bookKeyValue.Value.AllInformation);
-            }
-        }
-
+        /// <summary>
+        /// This method returns a Book object (if any) from
+        /// the List of books, which has a matching ISBN number.
+        /// If no such object exists, the method returns null.
+        /// </summary>
         public Book LookupBook(string isbn)
         {
-            Book matchingBook = null;
+            return _books.ContainsKey(isbn) ? _books[isbn] : null;
+        }
 
-            if (_books.ContainsKey(isbn))
-            {
-                matchingBook = _books[isbn];
-            }
-
-            return matchingBook;
-        } 
+        /// <summary>
+        /// This method deletes a Book object from the List
+        /// of books, specifically the object which has a
+        /// matching ISBN number. If no such object exists,
+        /// no object is deleted.
+        /// </summary>
+        public void DeleteBook(string isbn)
+        {
+            _books.Remove(isbn);
+        }
         #endregion
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LibraryV10
 {
@@ -20,37 +19,58 @@ namespace LibraryV10
         }
         #endregion
 
+        #region Properties
+        public int Count
+        {
+            get { return _books.Count; }
+        } 
+        #endregion
+
         #region Methods
+        /// <summary>
+        /// This method adds a single Book object 
+        /// to the List of books 
+        /// </summary>
         public void AddBook(Book aBook)
         {
-            if (LookupBook(aBook.ISBN) == null)
-            {
-                _books.Add(aBook);
-            }
+            _books.Add(aBook);
         }
 
-        public void PrintAllBooks()
-        {
-            foreach (var book in _books)
-            {
-                Console.WriteLine(book.AllInformation);
-            }
-        }
-
+        /// <summary>
+        /// This method returns a Book object (if any) from
+        /// the List of books, which has a matching ISBN number.
+        /// If no such object exists, the method returns null.
+        /// </summary>
         public Book LookupBook(string isbn)
         {
-            Book matchingBook = null;
-
             foreach (var book in _books)
             {
                 if (book.ISBN == isbn)
                 {
-                    matchingBook = book;
+                    return book;
                 }
             }
 
-            return matchingBook;
-        } 
+            return null;
+        }
+
+        /// <summary>
+        /// This method deletes a Book object from the List
+        /// of books, specifically the object which has a
+        /// matching ISBN number. If no such object exists,
+        /// no object is deleted.
+        /// </summary>
+        public void DeleteBook(string isbn)
+        {
+            for (int i = 0; i < _books.Count; i++)
+            {
+                if (_books[i].ISBN == isbn)
+                {
+                    _books.RemoveAt(i);
+                    return;
+                }
+            }
+        }
         #endregion
     }
 }

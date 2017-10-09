@@ -65,8 +65,8 @@ namespace WebShopV10
             for (int index = 0; index < _itemPriceList.Count; index++)
             {
                 AddAmount(index, Select(_itemPriceList[index] < StateTaxHighLimitAmount,
-                                        _itemPriceList[index] * StateTaxHighPercentage / 100,
-                                        _itemPriceList[index] * StateTaxLowPercentage / 100));
+                    _itemPriceList[index] * StateTaxHighPercentage / 100,
+                    _itemPriceList[index] * StateTaxLowPercentage / 100));
             }
         }
 
@@ -75,8 +75,8 @@ namespace WebShopV10
             for (int index = 0; index < _itemPriceList.Count; index++)
             {
                 AddAmount(index, Select(index < ShippingHighCostLimitItems,
-                                        ShippingHighCost,
-                                        ShippingLowCost));
+                    ShippingHighCost,
+                    ShippingLowCost));
             }
         }
 
@@ -85,8 +85,8 @@ namespace WebShopV10
             for (int index = 0; index < _itemPriceList.Count; index++)
             {
                 AddAmount(index, Select(_itemPriceList[index] * (EUTaxPercentage / 100) > EUTaxMinimumAmount,
-                                        _itemPriceList[index] * (EUTaxPercentage / 100),
-                                        EUTaxMinimumAmount));
+                    _itemPriceList[index] * (EUTaxPercentage / 100),
+                    EUTaxMinimumAmount));
             }
         }
 
@@ -98,7 +98,7 @@ namespace WebShopV10
         private void AddAmount(int index, double amount)
         {
             _itemPriceList[index] = _itemPriceList[index] + amount;
-        } 
+        }
         #endregion
     }
 }

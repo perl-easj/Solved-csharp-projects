@@ -63,23 +63,23 @@ namespace WebShopV10
         private void AddEUTaxToItem(int index)
         {
             AddAmount(index, _itemPriceList[index] * (EUTaxPercentage / 100) > EUTaxMinimumAmount
-                           ? _itemPriceList[index] * (EUTaxPercentage / 100)
-                           : EUTaxMinimumAmount);
+                ? _itemPriceList[index] * (EUTaxPercentage / 100)
+                : EUTaxMinimumAmount);
         }
 
         private void AddStateTaxToItem(int index)
         {
             AddAmount(index, _itemPriceList[index] < StateTaxHighLimitAmount
-                           ? _itemPriceList[index] * StateTaxHighPercentage / 100
-                           : _itemPriceList[index] * StateTaxLowPercentage / 100);
+                ? _itemPriceList[index] * StateTaxHighPercentage / 100
+                : _itemPriceList[index] * StateTaxLowPercentage / 100);
         }
 
         private void AddShippingCostToItem(int index)
         {
             AddAmount(index, index < ShippingHighCostLimitItems
-                           ? ShippingHighCost
-                           : ShippingLowCost);
-        } 
+                ? ShippingHighCost
+                : ShippingLowCost);
+        }
         #endregion
     }
 }
