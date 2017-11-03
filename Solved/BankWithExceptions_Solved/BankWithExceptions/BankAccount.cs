@@ -5,6 +5,18 @@
         private double _balance;
         private double _interestRate;
 
+        public BankAccount(double interestRate)
+        {
+            if (interestRate < 0.0 || interestRate > 20.0)
+            {
+                IllegalInterestRateException e = new IllegalInterestRateException($"Interest rate was {interestRate} %");
+                throw e;
+            }
+
+            _interestRate = interestRate;
+            _balance = 0.0;
+        }
+
         /// <summary>
         /// Balance of the account; must not become negative
         /// </summary>
@@ -21,24 +33,11 @@
             get { return _interestRate; }
         }
 
-
-        public BankAccount(double interestRate)
-        {
-            if (interestRate < 0.0 || interestRate > 20.0)
-            {
-                IllegalInterestRateException e = new IllegalInterestRateException();
-                throw e;
-            }
-
-            _interestRate = interestRate;
-            _balance = 0.0;
-        }
-
         public void Deposit(double amount)
         {
             if (amount < 0)
             {
-                NegativeAmountException e = new NegativeAmountException();
+                NegativeAmountException e = new NegativeAmountException($"Amount was {amount} kr.");
                 throw e;
             }
 
@@ -49,13 +48,14 @@
         {
             if (amount < 0)
             {
-                NegativeAmountException e = new NegativeAmountException();
+                NegativeAmountException e = new NegativeAmountException($"Amount was {amount} kr.");
                 throw e;
             }
 
             if (_balance < amount)
             {
-                throw new WithdrawAmountTooLargeException();
+                WithdrawAmountTooLargeException e = new WithdrawAmountTooLargeException($"Amount was {amount} kr., balance was {_balance} kr.");
+                throw e;
             }
 
             _balance = _balance - amount;

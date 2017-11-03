@@ -8,5 +8,13 @@ namespace BankWithExceptions
     /// </summary>
     class IllegalInterestRateException : Exception
     {
+        public IllegalInterestRateException()
+        {
+        }
+
+        public IllegalInterestRateException(string message)
+            : base(message)
+        {
+        }
     }
 }

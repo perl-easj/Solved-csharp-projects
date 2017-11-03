@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable RedundantAssignment
 
 namespace BankWithExceptions
 {
@@ -31,7 +32,7 @@ namespace BankWithExceptions
             }
             catch (NegativeAmountException e)
             {
-                Console.WriteLine("You tried to withdraw a negative amount: " + e.Message);
+                Console.WriteLine("You tried to deposit a negative amount: " + e.Message);
             }
                 
             try

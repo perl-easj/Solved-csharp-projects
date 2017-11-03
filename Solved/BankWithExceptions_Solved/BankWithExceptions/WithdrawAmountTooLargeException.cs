@@ -8,5 +8,13 @@ namespace BankWithExceptions
     /// </summary>
     class WithdrawAmountTooLargeException : Exception
     {
+        public WithdrawAmountTooLargeException()
+        {    
+        }
+
+        public WithdrawAmountTooLargeException(string message)
+            : base(message)
+        {
+        }
     }
 }
