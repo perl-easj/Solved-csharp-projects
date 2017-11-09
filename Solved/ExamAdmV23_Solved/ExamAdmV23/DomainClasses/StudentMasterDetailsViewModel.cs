@@ -4,9 +4,11 @@ namespace ExamAdmV23.DomainClasses
 {
     public class StudentMasterDetailsViewModel : MasterDetailsViewModelBase<Student, string>
     {
-        public StudentMasterDetailsViewModel() 
-            : base(new StudentViewModelFactory(), new StudentModel())
+        #region Constructor
+        public StudentMasterDetailsViewModel()
+            : base(new StudentViewModelFactory(), new StudentCatalog())
         {
-        }
+        } 
+        #endregion
     }
 }

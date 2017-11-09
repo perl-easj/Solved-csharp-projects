@@ -2,10 +2,22 @@
 {
     public class Student
     {
+        #region Instance fields
         private string _name;
         private string _subject;
         private int _score;
+        #endregion
 
+        #region Constructor
+        public Student()
+        {
+            _name = "Sarah";
+            _subject = "Economics";
+            _score = 85;
+        }
+        #endregion
+
+        #region Properties
         public string Name
         {
             get { return _name; }
@@ -22,13 +34,7 @@
         {
             get { return _score; }
             set { _score = value; }
-        }
-
-        public Student()
-        {
-            _name = "Sarah";
-            _subject = "Economics";
-            _score = 85;
-        }
+        } 
+        #endregion
     }
 }

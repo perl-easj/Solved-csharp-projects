@@ -101,7 +101,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="StudentCollection.cs" />
+    <Compile Include="StudentCatalog.cs" />
     <Compile Include="StudentMasterViewModel.cs" />
     <Compile Include="StudentItemViewModel.cs" />
   </ItemGroup>

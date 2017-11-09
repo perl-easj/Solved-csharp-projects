@@ -7,11 +7,14 @@ namespace ExamAdmV20
     {
         private Student _student;
 
+        #region Constructor
         public StudentViewModel()
         {
             _student = new Student();
         }
+        #endregion
 
+        #region Properties for Data Binding
         public string TopLineText
         {
             get
@@ -51,7 +54,8 @@ namespace ExamAdmV20
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(TopLineText));
             }
-        }
+        } 
+        #endregion
 
         #region OnPropertyChanged code
         public event PropertyChangedEventHandler PropertyChanged;

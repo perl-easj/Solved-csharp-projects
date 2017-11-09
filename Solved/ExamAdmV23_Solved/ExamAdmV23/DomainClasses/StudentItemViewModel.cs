@@ -4,11 +4,14 @@ namespace ExamAdmV23.DomainClasses
 {
     public class StudentItemViewModel : ItemViewModelBase<Student>
     {
-        public StudentItemViewModel(Student obj) 
+        #region Constructor
+        public StudentItemViewModel(Student obj)
             : base(obj)
         {
-        }
+        } 
+        #endregion
 
+        #region Properties for Data Binding
         public string Name
         {
             get { return DomainObject.Name; }
@@ -28,5 +31,6 @@ namespace ExamAdmV23.DomainClasses
         {
             get { return "(Born " + DomainObject.YearOfBirth + ")"; }
         }
+        #endregion
     }
 }

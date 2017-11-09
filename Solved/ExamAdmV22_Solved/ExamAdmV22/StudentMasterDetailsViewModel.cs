@@ -7,35 +7,29 @@ namespace ExamAdmV22
 {
     public class StudentMasterDetailsViewModel : INotifyPropertyChanged
     {
-        private StudentCollection _studentCollection;
+        #region Instance fields
+        private StudentCatalog _studentCollection;
         private StudentItemViewModel _studentItemViewModelSelected;
         private StudentMasterViewModel _studentMasterViewModel;
-        private RelayCommand _deleteCommand;
+        private DeleteCommand _deleteCommand;
+        #endregion
 
+        #region Constructor
         public StudentMasterDetailsViewModel()
         {
-            _studentCollection = new StudentCollection();
+            _studentCollection = new StudentCatalog();
             _studentMasterViewModel = new StudentMasterViewModel();
-            _deleteCommand = new RelayCommand(DoDelete,CanDelete);  // Changed
             _studentItemViewModelSelected = null;
-        }
 
+            _deleteCommand = new DeleteCommand(this);  // Changed
+        }
+        #endregion
+
+        #region Properties for Data Binding
         // Added
         public ICommand DeletionCommand
         {
             get { return _deleteCommand; }
-        }
-
-        // Added
-        public bool CanDelete()
-        {
-            return (StudentItemViewModelSelected != null);
-        }
-
-        // Added
-        public void DoDelete()
-        {
-            Delete(StudentItemViewModelSelected.Name);
         }
 
         public List<StudentItemViewModel> StudentItemViewModelCollection
@@ -53,7 +47,9 @@ namespace ExamAdmV22
                 OnPropertyChanged();
             }
         }
+        #endregion
 
+        #region Methods
         public void Delete(string name)
         {
             // Delete from model collection
@@ -64,7 +60,8 @@ namespace ExamAdmV22
 
             // Refresh the item list
             OnPropertyChanged(nameof(StudentItemViewModelCollection));
-        }
+        } 
+        #endregion
 
         #region OnPropertyChanged code
         public event PropertyChangedEventHandler PropertyChanged;

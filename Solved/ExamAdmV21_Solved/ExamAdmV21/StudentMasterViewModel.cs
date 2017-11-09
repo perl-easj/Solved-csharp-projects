@@ -4,23 +4,29 @@ namespace ExamAdmV21
 {
     public class StudentMasterViewModel
     {
-        private StudentCollection _studentCollection;
+        #region Instance fields
+        private StudentCatalog _studentCatalog;
         private ObservableCollection<StudentItemViewModel> _studentItemViewModelCollection;
+        #endregion
 
+        #region Constructor
         public StudentMasterViewModel()
         {
-            _studentCollection = new StudentCollection();
+            _studentCatalog = new StudentCatalog();
             _studentItemViewModelCollection = new ObservableCollection<StudentItemViewModel>();
 
-            foreach (Student s in _studentCollection.Students)
+            foreach (Student s in _studentCatalog.Students)
             {
                 _studentItemViewModelCollection.Add(new StudentItemViewModel(s));
             }
         }
+        #endregion
 
+        #region Properties
         public ObservableCollection<StudentItemViewModel> StudentItemViewModelCollection
         {
             get { return _studentItemViewModelCollection; }
-        }
+        } 
+        #endregion
     }
 }
