@@ -2,13 +2,13 @@
 
 namespace ExamAdmV23.DomainClasses
 {
-    public class StudentMasterDetailsViewModel : MasterDetailsViewModelBase<Student, string>
+    public class StudentMasterDetailsViewModel : MasterDetailsViewModelBase<Student>
     {
         #region Constructor
-        public StudentMasterDetailsViewModel()
-            : base(new StudentViewModelFactory(), new StudentCatalog())
+        public StudentMasterDetailsViewModel() 
+            : base(new StudentCatalog(), new StudentViewModelFactory())
         {
-        } 
+        }
         #endregion
     }
 }

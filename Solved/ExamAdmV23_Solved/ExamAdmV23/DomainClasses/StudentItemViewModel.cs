@@ -8,7 +8,7 @@ namespace ExamAdmV23.DomainClasses
         public StudentItemViewModel(Student obj)
             : base(obj)
         {
-        } 
+        }
         #endregion
 
         #region Properties for Data Binding
@@ -30,7 +30,7 @@ namespace ExamAdmV23.DomainClasses
         public string BirthStr
         {
             get { return "(Born " + DomainObject.YearOfBirth + ")"; }
-        }
+        } 
         #endregion
     }
 }

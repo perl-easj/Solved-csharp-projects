@@ -2,9 +2,10 @@
 
 namespace ExamAdmV23.DomainClasses
 {
-    public class Student : DomainClassBase<string>
+    public class Student : DomainClassBase
     {
         #region Instance fields
+        private int _key;
         private string _name;
         private int _yearOfBirth;
         private string _country;
@@ -14,6 +15,7 @@ namespace ExamAdmV23.DomainClasses
         #region Constructor
         public Student(string name, int yearOfBirth, string country, string imageSource)
         {
+            _key = -1;
             _name = name;
             _yearOfBirth = yearOfBirth;
             _country = country;
@@ -22,18 +24,15 @@ namespace ExamAdmV23.DomainClasses
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Override of base class abstract property
-        /// </summary>
-        public override string Key
+        public override int Key
         {
-            get { return _name; }
+            get { return _key; }
+            set { _key = value; }
         }
 
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
         }
 
         public int YearOfBirth
@@ -52,7 +51,7 @@ namespace ExamAdmV23.DomainClasses
         {
             get { return _imageSource; }
             set { _imageSource = value; }
-        } 
+        }
         #endregion
     }
 }
