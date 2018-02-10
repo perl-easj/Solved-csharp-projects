@@ -55,7 +55,7 @@ namespace StockTrade
                 }
             };
 
-            // [GIVEN] Start the Pulsar
+            // [GIVEN] Start the Pulse generator
             thePulseGenerator.Start(200, 20);
 
             KeepConsoleWindowOpen();
