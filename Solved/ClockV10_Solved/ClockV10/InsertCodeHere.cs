@@ -8,20 +8,27 @@ namespace ClockV10
         {
             // The FIRST line of code should be BELOW this line
 
-            Clock myClock = new Clock(13,59);
+            Clock myClock = new Clock(13,58);
+            Console.WriteLine(myClock.Display);
 
-            Console.WriteLine(myClock.Display);
-            myClock.AdvanceOneMinute();
-            Console.WriteLine(myClock.Display);
             myClock.AdvanceOneMinute();
             Console.WriteLine(myClock.Display);
 
-            myClock.Hours = 23;
-            myClock.Minutes = 59;
-
-            Console.WriteLine(myClock.Display);
             myClock.AdvanceOneMinute();
             Console.WriteLine(myClock.Display);
+
+            myClock.AdvanceOneMinute();
+            Console.WriteLine(myClock.Display);
+
+            myClock.SetTime(23,58);
+            Console.WriteLine(myClock.Display);
+
+            myClock.AdvanceOneMinute();
+            Console.WriteLine(myClock.Display);
+
+            myClock.AdvanceOneMinute();
+            Console.WriteLine(myClock.Display);
+
             myClock.AdvanceOneMinute();
             Console.WriteLine(myClock.Display);
 

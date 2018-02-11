@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BackPacking.Containers;
 using BackPacking.Item;
 
 namespace BackPacking.Algorithms
@@ -23,39 +24,42 @@ namespace BackPacking.Algorithms
         ///    3) Add the item to the Backpack.
         ///    4) Call Solve again (the weight capacity will now be reduced).
         /// </summary>
-        public override void Solve(double capacityLeft)
+        public override void Solve(ItemVault theItemVault, BackPack theBackPack)
         {
-            string description = PickBestItemFromVault(capacityLeft);
+            string description = PickNextItemFromVault(theItemVault, theBackPack.WeightCapacityLeft);
             if (description != string.Empty)
             {
-                BackPackItem item = TheVault.RemoveItem(description);
-                TheBackPack.AddItem(item);
-                Solve(TheBackPack.WeightCapacityLeft);
+                BackPackItem item = theItemVault.RemoveItem(description);
+                theBackPack.AddItem(item);
+                Solve(theItemVault, theBackPack);
             }
         }
 
         /// <summary>
         /// This method picks the "best" item currently in the Vault.
         /// "Best" is defined as the item for which it holds that:
-        ///   1) The weight of the item does not exceed the capacity.
+        ///   1) The weight of the item does not exceed the given limit.
         ///   2) No other item (for which 1) holds) has a higher 
         ///      "actual item value". The calculation of "actual item value"
         ///      is deferred to derived classes.
         /// </summary>
-        private string PickBestItemFromVault(double capacityLeft)
+        /// <returns>
+        /// Identifier for the "best" item (String.Empty if no item found)
+        /// </returns>
+        private string PickNextItemFromVault(ItemVault theItemVault, double weightLimit)
         {
-            double bestActualItemValue = 0;
+            double bestValue = 0;
             BackPackItem bestItem = null;
 
-            foreach (var item in TheVault.Items)
+            foreach (var item in theItemVault.Items)
             {
-                if (item.Weight <= capacityLeft)
+                if (item.Weight <= weightLimit)
                 {
-                    double candidateActualItemValue = ActualItemValue(item);
+                    double candidateValue = ActualItemValue(item);
 
-                    if (candidateActualItemValue > bestActualItemValue)
+                    if (candidateValue > bestValue)
                     {
-                        bestActualItemValue = candidateActualItemValue;
+                        bestValue = candidateValue;
                         bestItem = item;
                     }
                 }

@@ -134,7 +134,6 @@ namespace LINQHotels
                          select room;
 
             PrintEnumerableQueryResult("Query #5 - All double or family rooms with a price below 400 kr. (ordered by price)", query5);
-
             #endregion
 
 
@@ -200,7 +199,7 @@ namespace LINQHotels
 
         private static void PrintNumericQueryResult(string leadText, double queryResult)
         {
-            Console.WriteLine($"{leadText}: {queryResult:F}");
+            Console.WriteLine($"{leadText}: {queryResult:F0}");
             Console.WriteLine();
             Console.WriteLine();
         }

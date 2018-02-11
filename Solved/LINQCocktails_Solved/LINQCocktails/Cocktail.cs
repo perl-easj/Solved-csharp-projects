@@ -35,9 +35,9 @@ namespace LINQCocktails
         #endregion
 
         #region Methods
-        public void AddIngredient(string anIngredient, int amount)
+        public void AddIngredient(string ingredientName, int amount)
         {
-            _ingredients.Add(anIngredient, amount);
+            _ingredients.Add(ingredientName, amount);
         } 
         #endregion
     }

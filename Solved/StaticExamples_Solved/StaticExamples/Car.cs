@@ -7,7 +7,8 @@ namespace StaticExamples
     /// </summary>
     public class Car
     {
-        #region Static instance fields // Added
+        // Added
+        #region Static instance fields 
         private static int _noOfCarsObjectsCreated = 0;
         private static int _noOfCallsToLicensePlate = 0;
         private static int _noOfCallsToPrice = 0; 
@@ -21,7 +22,7 @@ namespace StaticExamples
         #region Constructor
         public Car(string licensePlate, int price)
         {
-            _noOfCarsObjectsCreated++;
+            _noOfCarsObjectsCreated++; // Added
             _licensePlate = licensePlate;
             _price = price;
         }
@@ -57,8 +58,9 @@ namespace StaticExamples
         }
         #endregion
 
+        // Added
         #region Static methods
-        public static void PrintUsageStatistics() // Added
+        public static void PrintUsageStatistics() 
         {
             Console.WriteLine($"Cars objects created : {_noOfCarsObjectsCreated}");
             Console.WriteLine($"Use of LicensePlate property: {_noOfCallsToLicensePlate}");

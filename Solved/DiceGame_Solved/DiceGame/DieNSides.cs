@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-
-namespace DiceGame
+﻿namespace DiceGame
 {
     /// <summary>
     /// This class represents a single N-sided die
@@ -10,24 +7,22 @@ namespace DiceGame
     class DieNSides
     {
         #region Instance fields
-        private int _value;
+        private int _faceValue;
         private int _noOfSides;
-        private Random _generator;
         #endregion
 
         #region Constructor
         public DieNSides(int noOfSides)
         {
             _noOfSides = noOfSides;
-            _generator = new Random(); // The generator is used for generating random numbers
-            Roll();  // This puts the die in a well-defined state
+            Roll(); // This puts the die in a well-defined state
         }
         #endregion
 
         #region Properties
-        public int Value
+        public int FaceValue
         {
-            get { return _value; }
+            get { return _faceValue; }
         }
         #endregion
 
@@ -38,9 +33,8 @@ namespace DiceGame
         /// </summary>
         public void Roll()
         {
-            Thread.Sleep(10); // This is needed for magical purposes...
-            _value = _generator.Next(_noOfSides) + 1;
-        } 
+            _faceValue = RandomNumberGenerator.Generate(1, _noOfSides);
+        }
         #endregion
     }
 }

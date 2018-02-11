@@ -13,9 +13,6 @@
         #region Constructor
         public DiceCup()
         {
-            // VERY IMPORTANT! When we have instance fields of a class type,
-            // we MUST remember to create actual objects in the constructor,
-            // that the instance fields can then point to.
             _die1 = new Die();
             _die2 = new Die();
         }

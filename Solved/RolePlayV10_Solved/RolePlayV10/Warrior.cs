@@ -4,18 +4,20 @@ namespace RolePlayV10
 {
     public class Warrior
     {
-        // Instance fields
+        #region Instance fields
         private string _name;
-        private int _level; // Added
+        private int _level; // Added 
+        #endregion
 
-        // Constructor
+        #region Constructor
         public Warrior(string name)
         {
             _name = name;
             _level = 1; // Added
         }
+        #endregion
 
-        // Properties
+        #region Properties
         public string Name
         {
             get { return _name; }
@@ -25,11 +27,13 @@ namespace RolePlayV10
         {
             get { return _level; }
         }
+        #endregion
 
-        // Methods (just one here so far...)
+        #region Methods
         public void LevelUp() // Added
         {
             _level = _level + 1;
-        }
+        } 
+        #endregion
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-
 #pragma warning disable 4014
 
 namespace ProducerConsumer
@@ -10,7 +9,7 @@ namespace ProducerConsumer
         {
             // Sets up and starts a scenario
             // Scenario theScenario = new Scenario(40, 20, 40, 100, 80, Reporter<Data>.ReportMode.verbose);
-            Scenario theScenario = new Scenario(1000, 500, 1000, 3, 2, Reporter<Data>.ReportMode.silent);
+            Scenario<Data> theScenario = new Scenario<Data>(1000, 500, 1000, 3, 2, Reporter<Data>.ReportMode.silent);
             theScenario.RunAsync();
 
             Console.WriteLine("Press any key to abort the run...");

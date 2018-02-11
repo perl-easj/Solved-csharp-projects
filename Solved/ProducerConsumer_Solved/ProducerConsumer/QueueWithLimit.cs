@@ -13,7 +13,8 @@ namespace ProducerConsumer
         #region Instance fields
         private Queue<T> _queue;
         private int _limit;
-        private int _countInitial;  
+        private int _countInitial;
+        private Object _lock;
         #endregion
 
         #region Constructor
@@ -26,6 +27,7 @@ namespace ProducerConsumer
             _queue = new Queue<T>();
             _limit = limit;
             _countInitial = countInitial;
+            _lock = new object();
 
             for (int i = 0; i < countInitial; i++)
             {
@@ -42,12 +44,12 @@ namespace ProducerConsumer
         {
             get
             {
-                lock (_queue)
+                lock (_lock)
                 {
                     return _queue.Count;
                 }
             }
-        }
+        } 
 
         /// <summary>
         /// Return the initial number of objects in the Queue
@@ -66,7 +68,7 @@ namespace ProducerConsumer
         /// <returns>True is insert was successful, otherwise false.</returns>
         public bool Insert(T value)
         {
-            lock (_queue)
+            lock (_lock)
             {
                 if (_queue.Count < _limit)
                 {
@@ -85,7 +87,7 @@ namespace ProducerConsumer
         /// <returns>Removed object</returns>
         public T Remove()
         {
-            lock (_queue)
+            lock (_lock)
             {
                 if (_queue.Count == 0)
                 {

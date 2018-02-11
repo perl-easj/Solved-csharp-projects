@@ -8,23 +8,29 @@ namespace RolePlayV11
         {
             // The FIRST line of code should be BELOW this line
 
-            Warrior firstWarrior = new Warrior("Ragnar", 200);
-            Warrior secondWarrior = new Warrior("Lagertha", 240);
+            Warrior warriorA = new Warrior("Ragnar", 200);
+            Warrior warriorB = new Warrior("Lagertha", 240);
 
-            Console.WriteLine($"{firstWarrior.Name} is level {firstWarrior.Level}, has {firstWarrior.HitPoints} hit points, Dead : {firstWarrior.Dead}");
-            Console.WriteLine($"{secondWarrior.Name} is level {secondWarrior.Level}, has {secondWarrior.HitPoints} hit points, Dead : {secondWarrior.Dead}");
+            Console.WriteLine("Just after creation:");
+            Console.WriteLine($"Warrior A is called {warriorA.Name}, is level {warriorA.Level}, and has {warriorA.HitPoints} hit points (Dead = {warriorA.Dead})");
+            Console.WriteLine($"Warrior B is called {warriorB.Name}, is level {warriorB.Level}, and has {warriorB.HitPoints} hit points (Dead = {warriorB.Dead})");
+            Console.WriteLine();
 
-            firstWarrior.DecreaseHitPoints(180);
-            secondWarrior.DecreaseHitPoints(180);
+            warriorA.DecreaseHitPoints(180);
+            warriorB.DecreaseHitPoints(180);
 
-            Console.WriteLine($"{firstWarrior.Name} is level {firstWarrior.Level}, has {firstWarrior.HitPoints} hit points, Dead : {firstWarrior.Dead}");
-            Console.WriteLine($"{secondWarrior.Name} is level {secondWarrior.Level}, has {secondWarrior.HitPoints} hit points, Dead : {secondWarrior.Dead}");
+            Console.WriteLine("After first hits:");
+            Console.WriteLine($"Warrior A is called {warriorA.Name}, is level {warriorA.Level}, and has {warriorA.HitPoints} hit points (Dead = {warriorA.Dead})");
+            Console.WriteLine($"Warrior B is called {warriorB.Name}, is level {warriorB.Level}, and has {warriorB.HitPoints} hit points (Dead = {warriorB.Dead})");
+            Console.WriteLine();
 
-            firstWarrior.DecreaseHitPoints(50);
-            secondWarrior.DecreaseHitPoints(50);
+            warriorA.DecreaseHitPoints(50);
+            warriorB.DecreaseHitPoints(50);
 
-            Console.WriteLine($"{firstWarrior.Name} is level {firstWarrior.Level}, has {firstWarrior.HitPoints} hit points, Dead : {firstWarrior.Dead}");
-            Console.WriteLine($"{secondWarrior.Name} is level {secondWarrior.Level}, has {secondWarrior.HitPoints} hit points, Dead : {secondWarrior.Dead}");
+            Console.WriteLine("After second hits:");
+            Console.WriteLine($"Warrior A is called {warriorA.Name}, is level {warriorA.Level}, and has {warriorA.HitPoints} hit points (Dead = {warriorA.Dead})");
+            Console.WriteLine($"Warrior B is called {warriorB.Name}, is level {warriorB.Level}, and has {warriorB.HitPoints} hit points (Dead = {warriorB.Dead})");
+            Console.WriteLine();
 
             // The LAST line of code should be ABOVE this line
         }

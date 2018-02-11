@@ -9,15 +9,19 @@ namespace StaticExamples
         {
             // The FIRST line of code should be BELOW this line
 
-            List<int> aList = new List<int> {23, 86, 51, 11, 39};
+            #region ListMethods test
+            List<int> aList = new List<int> { 23, 86, 51, 11, 39 };
 
             int smallest = ListMethods.FindSmallestNumber(aList);
             Console.WriteLine($"The smallest number in the list is : {smallest}");
 
             int average = ListMethods.FindAverage(aList);
             Console.WriteLine($"The average of the list is : {average}");
+            #endregion
 
-            Car car1 = new Car("ABC 123",15000);
+
+            #region Car test
+            Car car1 = new Car("ABC 123", 15000);
             Car car2 = new Car("DEF 456", 22000);
             Car car3 = new Car("HIJ 789", 8000);
 
@@ -28,7 +32,8 @@ namespace StaticExamples
             Console.WriteLine(car1.LicensePlate);
             Console.WriteLine(car3.Price);
 
-            Car.PrintUsageStatistics();
+            Car.PrintUsageStatistics(); 
+            #endregion
 
             // The LAST line of code should be ABOVE this line
         }

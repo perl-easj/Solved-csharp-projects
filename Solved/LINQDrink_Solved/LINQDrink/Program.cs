@@ -108,13 +108,13 @@ namespace LINQDrink
             Console.WriteLine("--------------------------------------------------------------------");
             foreach (var group in queryResult7)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Drinks with {group.Key}");
                 Console.WriteLine("-------------------------");
                 foreach (var element in group)
                 {
                     Console.WriteLine($"{element.Name}  ({element.AlcoholicPartAmount} cl.)");
                 }
-                Console.WriteLine();
             }
             Console.WriteLine(); 
             #endregion

@@ -3,29 +3,30 @@
     public class Clock
     {
         #region Instance fields
-        private int _minutes;
-        private int _hours;
+        private int _minutesSince0000;
         #endregion
 
-        #region Constructor
+        #region Constructors
         public Clock(int hours, int minutes)
         {
-            _minutes = minutes;
-            _hours = hours;
+            SetTime(hours, minutes);
+        }
+
+        public Clock()
+        {
+            SetTime(0, 0);
         }
         #endregion
 
         #region Properties
         public int Minutes
         {
-            get { return _minutes; }
-            set { _minutes = value; }
+            get { return _minutesSince0000 % 60; }
         }
 
         public int Hours
         {
-            get { return _hours; }
-            set { _hours = value; }
+            get { return _minutesSince0000 / 60; }
         }
 
         public string Display
@@ -35,10 +36,14 @@
         #endregion
 
         #region Methods
+        public void SetTime(int hours, int minutes)
+        {
+            _minutesSince0000 = (hours * 60) + minutes;
+        }
+
         public void AdvanceOneMinute()
         {
-            _minutes = (_minutes + 1) % 60;
-            _hours = (_hours + (60 - _minutes) / 60) % 24;
+            _minutesSince0000 = (_minutesSince0000 + 1) % 1440;
         } 
         #endregion
     }

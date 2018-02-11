@@ -8,17 +8,23 @@ namespace RolePlayV10
         {
             // The FIRST line of code should be BELOW this line
 
-            Warrior theWarrior = new Warrior("Ragnar");
+            Warrior warriorA = new Warrior("Ragnar");
+            Warrior warriorB = new Warrior("Lagertha");
 
-            Console.WriteLine($"{theWarrior.Name} is level {theWarrior.Level}");
+            Console.WriteLine("Before calls of LevelUp()");
+            Console.WriteLine($"Warrior A is called {warriorA.Name}, and is Level {warriorA.Level}");
+            Console.WriteLine($"Warrior B is called {warriorB.Name}, and is Level {warriorB.Level}");
+            Console.WriteLine();
 
-            theWarrior.LevelUp();
-            Console.WriteLine($"{theWarrior.Name} is level {theWarrior.Level}");
+            warriorA.LevelUp();
+            warriorB.LevelUp();
+            warriorB.LevelUp();
+            warriorB.LevelUp();
 
-            theWarrior.LevelUp();
-            theWarrior.LevelUp();
-            theWarrior.LevelUp();
-            Console.WriteLine($"{theWarrior.Name} is level {theWarrior.Level}");
+            Console.WriteLine("After calls of LevelUp()");
+            Console.WriteLine($"Warrior A is called {warriorA.Name}, and is Level {warriorA.Level}");
+            Console.WriteLine($"Warrior B is called {warriorB.Name}, and is Level {warriorB.Level}");
+            Console.WriteLine();
 
             // The LAST line of code should be ABOVE this line
         }

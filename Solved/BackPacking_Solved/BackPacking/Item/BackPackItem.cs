@@ -18,7 +18,7 @@
             _description = description;
             _weight = weight;
             _value = value;
-        } 
+        }
         #endregion
 
         #region Properties
@@ -35,12 +35,12 @@
         public int Value
         {
             get { return _value; }
-        } 
+        }
         #endregion
 
         public override string ToString()
         {
-            return Description + ": weight " + Weight + " kg, worth " + Value;
+            return $"{Description} : weight {Weight} kg., worth {Value}";
         }
     }
 }

@@ -9,16 +9,17 @@ namespace ProducerConsumer
     /// Currently, the scenario only contains a single participant
     /// of each type.
     /// </summary>
-    public class Scenario
+    public class Scenario<T> where T : new()
     {
         #region Instance fields
-        private QueueWithLimit<Data> _queue;
-        private Producer<Data> _producer;
-        private Consumer<Data> _consumer;
-        private Reporter<Data> _reporter;
+        private QueueWithLimit<T> _queue;
+        private Producer<T> _producer;
+        private Consumer<T> _consumer;
+        private Reporter<T> _reporter;
         private int _iterations;
         private int _producerDelay;
         private int _consumerDelay;
+        private Object _lock;
         #endregion
 
         #region Constructor
@@ -27,16 +28,18 @@ namespace ProducerConsumer
         /// of each type.
         /// </summary>
         public Scenario(int queueLimit, int initialElements, int iterations,
-                        int producerDelay, int consumerDelay, Reporter<Data>.ReportMode mode)
+                        int producerDelay, int consumerDelay, Reporter<T>.ReportMode mode)
         {
-            _queue = new QueueWithLimit<Data>(queueLimit, initialElements);
-            _producer = new Producer<Data>(_queue);
-            _consumer = new Consumer<Data>(_queue);
-            _reporter = new Reporter<Data>(_queue, _producer, _consumer, mode);
+            _queue = new QueueWithLimit<T>(queueLimit, initialElements);
+            _producer = new Producer<T>(_queue);
+            _consumer = new Consumer<T>(_queue);
+            _reporter = new Reporter<T>(_queue, _producer, _consumer, mode);
 
             _iterations = iterations;
             _producerDelay = producerDelay;
             _consumerDelay = consumerDelay;
+
+            _lock = new object();
         }
         #endregion
 
@@ -54,7 +57,10 @@ namespace ProducerConsumer
             await taskProduce;
             await taskConsume;
 
-            _reporter.ReportFinal();
+            lock (_lock)
+            {
+                _reporter.ReportFinal();
+            }
             Console.WriteLine("Done...");
         }
 
@@ -72,7 +78,7 @@ namespace ProducerConsumer
             {
                 _producer.Produce();
 
-                lock (_reporter)
+                lock (_lock)
                 {
                     _reporter.Report();
                 }
@@ -95,7 +101,7 @@ namespace ProducerConsumer
             {
                 _consumer.Consume();
 
-                lock (_reporter)
+                lock (_lock)
                 {
                     _reporter.Report();
                 }
