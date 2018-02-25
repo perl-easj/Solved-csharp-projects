@@ -37,9 +37,23 @@ namespace WebShopV10
         {
             get
             {
-                ForEachItem(AddStateTaxToItem);
-                ForEachItem(AddShippingCostToItem);
-                ForEachItem(AddEUTaxToItem);
+                // State Tax
+                AddToEachItem(
+                    index => _itemPriceList[index] < StateTaxHighLimitAmount,
+                    index => _itemPriceList[index] * StateTaxHighPercentage / 100,
+                    index => _itemPriceList[index] * StateTaxLowPercentage / 100);
+
+                // Shipping
+                AddToEachItem(
+                    index => index < ShippingHighCostLimitItems,
+                    index => ShippingHighCost,
+                    index => ShippingLowCost);
+
+                // EU Tax
+                AddToEachItem(
+                    index => _itemPriceList[index] * (EUTaxPercentage / 100) > EUTaxMinimumAmount,
+                    index => _itemPriceList[index] * (EUTaxPercentage / 100),
+                    index => EUTaxMinimumAmount);
 
                 return _itemPriceList.Sum();
             }
@@ -47,38 +61,12 @@ namespace WebShopV10
         #endregion
 
         #region Methods
-        private void ForEachItem(Action<int> action)
+        private void AddToEachItem(Func<int, bool> criterion, Func<int, double> calcOnTrue, Func<int, double> calcOnFalse)
         {
             for (int index = 0; index < _itemPriceList.Count; index++)
             {
-                action(index);
+                _itemPriceList[index] += criterion(index) ? calcOnTrue(index) : calcOnFalse(index);
             }
-        }
-
-        private void AddAmount(int index, double amount)
-        {
-            _itemPriceList[index] = _itemPriceList[index] + amount;
-        }
-
-        private void AddEUTaxToItem(int index)
-        {
-            AddAmount(index, _itemPriceList[index] * (EUTaxPercentage / 100) > EUTaxMinimumAmount
-                ? _itemPriceList[index] * (EUTaxPercentage / 100)
-                : EUTaxMinimumAmount);
-        }
-
-        private void AddStateTaxToItem(int index)
-        {
-            AddAmount(index, _itemPriceList[index] < StateTaxHighLimitAmount
-                ? _itemPriceList[index] * StateTaxHighPercentage / 100
-                : _itemPriceList[index] * StateTaxLowPercentage / 100);
-        }
-
-        private void AddShippingCostToItem(int index)
-        {
-            AddAmount(index, index < ShippingHighCostLimitItems
-                ? ShippingHighCost
-                : ShippingLowCost);
         }
         #endregion
     }

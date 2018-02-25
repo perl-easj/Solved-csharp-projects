@@ -11,46 +11,51 @@ namespace CorrectChangeAutomat
 
             int originalAmountToPayBack = 234;
 
-            // Løsning 1
+
+            #region Solution #1 (using while-loops)
+
             int amountToPayBack = originalAmountToPayBack;
+            int kr100 = 0;
+            int kr10 = 0;
+            int kr1 = 0;
 
             while (amountToPayBack >= 100)
             {
-                Console.WriteLine("Her er en 100-kr seddel");
+                kr100 = kr100 + 1;
                 amountToPayBack = amountToPayBack - 100;
             }
 
             while (amountToPayBack >= 10)
             {
-                Console.WriteLine("Her er en 10-kr mønt");
+                kr10 = kr10 + 1;
                 amountToPayBack = amountToPayBack - 10;
             }
 
             while (amountToPayBack >= 1)
             {
-                Console.WriteLine("Her er en 1-kr mønt");
+                kr1 = kr1 + 1;
                 amountToPayBack = amountToPayBack - 1;
             }
 
-            Console.WriteLine();
+            Console.WriteLine($"(Solution #1) 100-kr bills: {kr100}   10-kr coins: {kr10}   1-kr coins: {kr1}");
             Console.WriteLine();
 
-            // Løsning 2
+            #endregion
+
+            #region Solution #2 (without using loops)
+
             amountToPayBack = originalAmountToPayBack;
-            int noOf100 = HowManyUnitsBack(amountToPayBack, 100);
-            amountToPayBack = amountToPayBack - noOf100 * 100;
-            int noOf10 = HowManyUnitsBack(amountToPayBack, 10);
-            amountToPayBack = amountToPayBack - noOf10 * 10;
+            kr100 = amountToPayBack / 100;
+            amountToPayBack = amountToPayBack - kr100 * 100;
+            kr10 = amountToPayBack / 10;
+            kr1 = amountToPayBack - kr10 * 10;
 
-            Console.WriteLine($"100-kr sedler: {noOf100} 10-kr mønter: {noOf10} 1-kr mønter: {amountToPayBack}");
+            Console.WriteLine($"(Solution #2) 100-kr bills: {kr100}   10-kr coins: {kr10}   1-kr coins: {kr1}"); 
+
+            #endregion
 
             // The LAST line of code should be ABOVE this line
 
-        }
-
-        public int HowManyUnitsBack(int amount, int unit)
-        {
-            return amount / unit;
         }
     }
 }

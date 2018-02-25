@@ -3,7 +3,7 @@
     public class MysticNumbers
     {
         #region Methods
-        public int ThreeNumbers(int a, int b, int c)
+        public static int ThreeNumbers(int a, int b, int c)
         {
             int result;
 
@@ -27,7 +27,7 @@
             return result;
         }
 
-        public int TwoNumbers(int a, int b)
+        public static int TwoNumbers(int a, int b)
         {
             int result;
 
@@ -43,7 +43,7 @@
             return result;
         }
 
-        public int FourNumbers(int a, int b, int c, int d)
+        public static int FourNumbers(int a, int b, int c, int d)
         {
             return TwoNumbers(TwoNumbers(a,b),TwoNumbers(c,d));
         } 

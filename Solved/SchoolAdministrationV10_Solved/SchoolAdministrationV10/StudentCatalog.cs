@@ -78,7 +78,7 @@ namespace SchoolAdministrationV10
                 }
             }
 
-            return sumOfAverages / studentCount;
+            return studentCount > 0 ? sumOfAverages / studentCount : -1;
         } 
         #endregion
     }

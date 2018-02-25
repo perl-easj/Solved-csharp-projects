@@ -13,7 +13,7 @@ namespace WhileLoopsBaseCamp
             int c1 = 1;
             while (c1 < 20)
             {
-                // Console.WriteLine(c1); // Uncomment to see result
+                Console.WriteLine(c1);
                 c1 = c1 + 2;
             }
             Console.WriteLine("End of Case 1");
@@ -24,7 +24,7 @@ namespace WhileLoopsBaseCamp
             int c2 = 1;
             while (c2 < 20)
             {
-                // Console.WriteLine(c2); // Uncomment to see result
+                Console.WriteLine(c2);
                 c2 = c2 * 2;
             }
             Console.WriteLine("End of Case 2");
@@ -35,7 +35,7 @@ namespace WhileLoopsBaseCamp
             int c3 = 15;
             while ((c3 < 20) && (c3 > 10))
             {
-                // Console.WriteLine(c3);  // Uncomment to see result
+                Console.WriteLine(c3);
                 c3++;
             }
             Console.WriteLine("End of Case 3");
@@ -46,7 +46,7 @@ namespace WhileLoopsBaseCamp
             int c4 = 10;
             while (c4 >= 0)
             {
-                // Console.WriteLine(c4);  // Uncomment to see result
+                Console.WriteLine(c4);
                 c4--;
             }
             Console.WriteLine("End of Case 4");
@@ -68,11 +68,11 @@ namespace WhileLoopsBaseCamp
             // Case 6
             // Print out the numbers 0,1,3,7,15,31
             Console.WriteLine("Start of Case 6");
-            int c6 = 1;
+            int c6 = 0;
             while (c6 < 50)
             {
-                Console.WriteLine(c6 - 1);
-                c6 = c6 * 2;
+                Console.WriteLine(c6);
+                c6 = c6 * 2 + 1;
             }
             Console.WriteLine("End of Case 6");
 
@@ -88,18 +88,17 @@ namespace WhileLoopsBaseCamp
             }
             Console.WriteLine("End of Case 6");
 
+
             // Case 8 (DIFFICULT)
             // Print out the numbers 10,9,12,7,14,5,16,3,18,1
             Console.WriteLine("Start of Case 8");
-            int c8 = 0;
-            while (c8 < 10)
+            int c8 = 10;
+            while (c8 > 0 && c8 < 20)
             {
-                Console.WriteLine(10 + (((c8 % 2) == 0) ? c8: -c8));
-                c8 = c8 +1;
+                Console.WriteLine(c8);
+                c8 = 19 + ((c8 % 2) * 2) - c8;
             }
             Console.WriteLine("End of Case 8");
-
-
 
             // The LAST line of code should be ABOVE this line
         }

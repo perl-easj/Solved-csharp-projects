@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DrawShapes
+﻿namespace DrawShapes
 {
     public class InsertCodeHere
     {
@@ -12,10 +10,11 @@ namespace DrawShapes
             //
             // **********
             //
-            for (int i = 0; i < 10; i++)
+            for (int column = 0; column < 10; column++)
             {
                 DrawingTool.DrawOneStar();
             }
+
             DrawingTool.StartNewLine();
             DrawingTool.StartNewLine();
 
@@ -23,11 +22,12 @@ namespace DrawShapes
             //
             // * * * * * 
             //
-            for (int i = 0; i < 5; i++)
+            for (int column = 0; column < 5; column++)
             {
                 DrawingTool.DrawOneStar();
                 DrawingTool.DrawOneSpace();
             }
+
             DrawingTool.StartNewLine();
             DrawingTool.StartNewLine();
 
@@ -44,15 +44,16 @@ namespace DrawShapes
             // **********
             // **********
             //
-            for (int i = 0; i < 10; i++)
+            for (int row = 0; row < 10; row++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int column = 0; column < 10; column++)
                 {
                     DrawingTool.DrawOneStar();
                 }
 
                 DrawingTool.StartNewLine();
             }
+
             DrawingTool.StartNewLine();
 
             // SHAPE D (a triangle, I guess...)
@@ -68,15 +69,16 @@ namespace DrawShapes
             // *********
             // **********
             //
-            for (int i = 0; i < 10; i++)
+            for (int row = 0; row < 10; row++)
             {
-                for (int j = 0; j < (i + 1); j++)
+                for (int column = 0; column <= row; column++)
                 {
                     DrawingTool.DrawOneStar();
                 }
 
                 DrawingTool.StartNewLine();
             }
+
             DrawingTool.StartNewLine();
 
             // SHAPE E (X)
@@ -91,11 +93,11 @@ namespace DrawShapes
             //   *    *   
             //  *      * 
             // *        *
-            for (int i = 0; i < 10; i++)
+            for (int row = 0; row < 10; row++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int column = 0; column < 10; column++)
                 {
-                    if ((i == j) || ((i+j) == 9))
+                    if ((row == column) || ((row + column) == 9))
                     {
                         DrawingTool.DrawOneStar();
                     }

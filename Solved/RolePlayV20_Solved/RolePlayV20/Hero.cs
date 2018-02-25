@@ -6,7 +6,7 @@
     /// 2) The character can deal damage
     /// 3) The character can receive damage, causing the hit points to decrease
     /// </summary>
-    class Hero
+    public class Hero
     {
         #region Instance fields
         private int _hitPoints;
@@ -58,7 +58,7 @@
         public int DealDamage()
         {
             int damage = _generator.Next(_minDamage, _maxDamage);
-            string message = "Hero dealt " + damage + " damage!";
+            string message = $"Hero dealt {damage} damage!";
             _log.Save(message);
             return damage;
         }
@@ -70,7 +70,7 @@
         public void ReceiveDamage(int points)
         {
             _hitPoints = _hitPoints - points;
-            string message = "Hero receives " + points + " damage, and is down to " + _hitPoints + " hit points";
+            string message = $"Hero receives {points} damage, and is down to {_hitPoints} hit points";
             _log.Save(message);
 
             if (Dead)
