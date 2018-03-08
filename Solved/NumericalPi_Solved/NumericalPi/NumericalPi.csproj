@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PiCalc.cs" />
+    <Compile Include="PiCalcFixedTasks.cs" />
+    <Compile Include="PiCalcListOfTasks.cs" />
+    <Compile Include="PiCalcParallel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
