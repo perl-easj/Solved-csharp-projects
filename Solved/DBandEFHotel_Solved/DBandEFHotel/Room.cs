@@ -37,7 +37,7 @@ namespace DBandEFHotel
 
         public override string ToString()
         {
-            return $"Room: #{Room_No} at {Hotel.Name} ({Price} kr. per day)";
+            return $"Room: #{Room_No} at {Hotel.Name} ({Price} kr. per day) Bookings: {Bookings?.Count}";
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DBandEFHotel
 
         public override string ToString()
         {
-            return $"Guest: {Name} ({Address})";
+            return $"Guest: {Name} ({Address})  Bookings: {Bookings?.Count}";
         }
     }
 }

@@ -30,7 +30,7 @@ namespace DBandEFHotel
 
         public override string ToString()
         {
-            return $"Booking from {Date_From} to {Date_To}, by {Guest.Name}";
+            return $"Room {Room_No} at {Room?.Hotel?.Name}: Booking from {Date_From} to {Date_To}, by {Guest.Name}";
         }
     }
 }

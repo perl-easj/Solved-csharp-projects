@@ -5,21 +5,42 @@ namespace NoteBook
 {
     public class NoteModel
     {
+        #region Instance fields
         private Dictionary<string, Note> _notes;
+        private IDataSource<Note> _source;
+        #endregion
 
+        #region Constructor
         public NoteModel()
         {
             _notes = new Dictionary<string, Note>();
+            _source = new FilePersistency<Note>();
         }
+        #endregion
 
+        #region Properties
         public List<Note> All
         {
             get { return _notes.Values.ToList(); }
         }
+        #endregion
+
+        #region Methods
+        public async void LoadAsync()
+        {
+            List<Note> notes = await _source.LoadAsync();
+            Clear();
+            notes.ForEach(Add);
+        }
+
+        public async void SaveAsync()
+        {
+            await _source.SaveAsync(All);
+        }
 
         public void Add(Note aNote)
         {
-            if (ContainsTitle(aNote.Title)) // Added
+            if (_notes.ContainsKey(aNote.Title))
             {
                 throw new TitleExistsException(aNote.Title);
             }
@@ -46,10 +67,10 @@ namespace NoteBook
         {
             return _notes.ContainsKey(title);
         }
-
+        
         public void UpdateTitle(string oldTitle, string newTitle)
         {
-            if (ContainsTitle(newTitle)) // Added
+            if (_notes.ContainsKey(newTitle))
             {
                 throw new TitleExistsException(newTitle);
             }
@@ -65,5 +86,6 @@ namespace NoteBook
                 Add(new Note(newTitle, content));
             }
         }
+        #endregion
     }
 }
