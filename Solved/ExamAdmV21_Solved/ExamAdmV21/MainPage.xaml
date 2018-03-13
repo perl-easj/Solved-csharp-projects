@@ -8,11 +8,11 @@
     mc:Ignorable="d">
 
     <Page.DataContext>
-        <local:StudentMasterDetailsViewModel/>
+        <local:StudentPageViewModel/>
     </Page.DataContext>
 
     <StackPanel>
-        <ListView ItemsSource="{Binding StudentItemViewModelCollection}">
+        <ListView ItemsSource="{Binding StudentDataViewModelCollection}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

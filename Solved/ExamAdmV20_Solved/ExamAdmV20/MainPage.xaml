@@ -20,7 +20,7 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <local:StudentViewModel/>
+        <local:StudentDataViewModel/>
     </Page.DataContext>
 
     <StackPanel>

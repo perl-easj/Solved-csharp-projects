@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ExamAdmV12.Annotations;
 
 namespace ExamAdmV12
 {
@@ -48,13 +47,11 @@ namespace ExamAdmV12
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged
         ([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this,
             new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

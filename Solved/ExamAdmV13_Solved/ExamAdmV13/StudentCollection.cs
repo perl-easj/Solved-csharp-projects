@@ -7,9 +7,12 @@ namespace ExamAdmV13
 {
     class StudentCollection : INotifyPropertyChanged
     {
+        #region Instance fields
         private List<Student> _students;
         private ObservableCollection<string> _subjects;
+        #endregion
 
+        #region Constructor
         public StudentCollection()
         {
             _students = new List<Student>();
@@ -23,8 +26,9 @@ namespace ExamAdmV13
             _subjects.Add("English");
             _subjects.Add("Chemistry");
         }
+        #endregion
 
-
+        #region Properties for Data Binding
         public List<Student> Students
         {
             get { return _students; }
@@ -54,13 +58,13 @@ namespace ExamAdmV13
                 _subjects.Add(value);
 
                 // This call makes the "No. of subjects" field refresh itself
-                OnPropertyChanged(nameof(NoOfSubjects)); 
+                OnPropertyChanged(nameof(NoOfSubjects));
             }
-        }
+        } 
+        #endregion
 
         #region OnPropertyChanged code
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged
         ([CallerMemberName] string propertyName = null)
         {

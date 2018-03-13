@@ -2,9 +2,9 @@
 
 namespace ExamAdmV23.DomainClasses
 {
-    public class DeleteCommand : DeleteCommandBase<Student, StudentMasterDetailsViewModel>
+    public class DeleteCommand : DeleteCommandBase<Student, StudentPageViewModel>
     {
-        public DeleteCommand(StudentCatalog catalog, StudentMasterDetailsViewModel viewModel)
+        public DeleteCommand(StudentCatalog catalog, StudentPageViewModel viewModel)
             : base(catalog, viewModel)
         {
         }

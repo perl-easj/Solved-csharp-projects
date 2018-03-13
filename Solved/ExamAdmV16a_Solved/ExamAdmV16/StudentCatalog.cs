@@ -10,7 +10,7 @@ namespace ExamAdmV16
         #region Instance fields
         private ObservableCollection<Student> _students;
         private Student _selectedStudent;
-        private DeleteCommand _deleteCommand;
+        private DeleteCommand _deletionCommand;
         #endregion
 
         #region Constructor
@@ -24,7 +24,7 @@ namespace ExamAdmV16
             _students.Add(new Student("Daniel", 1990, "Denmark", "Assets\\daniel.jpg", "Stormly 206", 2740, "Skovlunde", 57442194, "daniel@cartoon-uni.dk"));
             _students.Add(new Student("Eliza", 1974, "Australia", "Assets\\eliza.jpg", "Askelunden 148", 4000, "Roskilde", 61750092, "eliza@cartoon-uni.dk"));
 
-            _deleteCommand = new DeleteCommand(this);
+            _deletionCommand = new DeleteCommand(this);
         }
         #endregion
 
@@ -41,13 +41,13 @@ namespace ExamAdmV16
             {
                 _selectedStudent = value;
                 OnPropertyChanged();
-                _deleteCommand.RaiseCanExecuteChanged();
+                _deletionCommand.RaiseCanExecuteChanged();
             }
         }
 
         public ICommand DeletionCommand
         {
-            get { return _deleteCommand; }
+            get { return _deletionCommand; }
         }
         #endregion
 

@@ -14,15 +14,15 @@
     <StackPanel>
         <ListView ItemsSource="{Binding Students}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Student">
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="10,10,10,10">
                             <Image Source="{Binding ImageSource}" Height="80" Width="80"/>
                             <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Margin="10,10,10,10">
-                            <TextBlock FontSize="24" Text="{Binding CountryStr}"/>
-                            <TextBlock FontSize="24" Text="{Binding BirthStr}"/>
+                            <TextBlock FontSize="24" Text="{Binding Country}"/>
+                            <TextBlock FontSize="24" Text="{Binding YearOfBirth}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

@@ -96,6 +96,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\DeleteCommand.cs" />
+    <Compile Include="ViewModel\StudentDataViewModel.cs" />
+    <Compile Include="ViewModel\StudentPageViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -103,9 +105,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\StudentCatalog.cs" />
-    <Compile Include="ViewModel\StudentDetailsViewModel.cs" />
-    <Compile Include="ViewModel\StudentItemViewModel.cs" />
-    <Compile Include="ViewModel\StudentMasterDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

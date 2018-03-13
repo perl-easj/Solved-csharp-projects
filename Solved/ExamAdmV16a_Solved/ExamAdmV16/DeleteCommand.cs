@@ -2,21 +2,21 @@
 {
     public class DeleteCommand : CommandBase
     {
-        private StudentCatalog _studentCatalog;
+        private StudentCatalog _catalog;
 
-        public DeleteCommand(StudentCatalog studentCatalog)
+        public DeleteCommand(StudentCatalog catalog)
         {
-            _studentCatalog = studentCatalog;
+            _catalog = catalog;
         }
 
         public override bool CanExecute(object parameter)
         {
-            return _studentCatalog.SelectedStudent != null;
+            return _catalog.SelectedStudent != null;
         }
 
         public override void Execute(object parameter)
         {
-            _studentCatalog.Delete(_studentCatalog.SelectedStudent.Name);
+            _catalog.Delete(_catalog.SelectedStudent.Name);
         }
     }
 }
