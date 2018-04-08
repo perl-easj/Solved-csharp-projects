@@ -11,17 +11,11 @@ namespace WeaponFactory.Factories
     {
         public IWeapon Create(WeaponType type)
         {
-            switch (type)
-            {
-                case WeaponType.Meele:
-                    return new TazerKnuckles();
-                case WeaponType.Ranged:
-                    return new Phaser();
-                case WeaponType.Magic:
-                    return new VacuumEnergyChanneler();
-                default:
-                    throw new ArgumentException($"WeaponFactoryFuture - no class available for weapon type {type}");
-            }
+            if (type == WeaponType.Melee) return new TazerKnuckles();
+            if (type == WeaponType.Ranged) return new Phaser();
+            if (type == WeaponType.Magic) return new VacuumEnergyChanneler();
+
+            throw new ArgumentException($"WeaponFactoryFuture - no class available for weapon type {type}");
         }
     }
 }

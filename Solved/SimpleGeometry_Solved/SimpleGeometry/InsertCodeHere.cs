@@ -20,6 +20,7 @@ namespace SimpleGeometry
             {
                 Console.WriteLine($"A {s.ShapeName} with area {s.Area:F2}");
             }
+            Console.WriteLine();
 
             double totalArea = Shape.FindTotalArea(shapeList);
             Console.WriteLine($"The total area of the shapes is {totalArea:F2}");

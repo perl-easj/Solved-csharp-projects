@@ -22,7 +22,7 @@ namespace WeaponFactory
 
         private static void TestWeaponFactory(IWeaponFactory factory)
         {
-            IWeapon meeleWeapon = factory.Create(WeaponType.Meele);
+            IWeapon meeleWeapon = factory.Create(WeaponType.Melee);
             IWeapon rangedWeapon = factory.Create(WeaponType.Ranged);
             IWeapon magicWeapon = factory.Create(WeaponType.Magic);
 

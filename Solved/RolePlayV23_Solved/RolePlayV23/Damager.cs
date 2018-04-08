@@ -1,35 +1,29 @@
 ﻿namespace RolePlayV23
 {
     /// <summary>
-    /// This class represents the "damager" character type.
+    /// This class represents the Damager character type.
     /// </summary>
-    class Damager : Character
+    public class Damager : Character
     {
         public Damager(string name, int hitPoints, int minDamage, int maxDamage) 
             : base(name, hitPoints, minDamage, maxDamage)
         {
         }
 
-        public override int DealDamage()
+        /// <summary>
+        /// A Damager has a 40 % chance of dealing increased damage.
+        /// </summary>
+        protected override int DealDamageModifyChance
         {
-            int percentRoll = NumberGenerator.Next(0, 100);
-            int damage = NumberGenerator.Next(_minDamage, _maxDamage);
+            get { return 40; }
+        }
 
-            if (percentRoll < 40)
-            {
-                // Increased damage              
-                damage = damage * 2;
-                string message = Name + " dealt " + damage + " damage! (INCREASED)";
-                BattleLog.Save(message);
-            }
-            else
-            {
-                // Normal damage
-                string message = Name + " dealt " + damage + " damage!";
-                BattleLog.Save(message);
-            }
-
-            return damage;
+        /// <summary>
+        /// If the damage is increased, it is doubled.
+        /// </summary>
+        protected override int CalculateModifiedDealDamage(int dealtDamage)
+        {
+            return dealtDamage * 2;
         }
     }
 }

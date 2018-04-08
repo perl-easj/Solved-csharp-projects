@@ -2,7 +2,7 @@
 
 namespace SimpleGeometry
 {
-    class Circle : Shape
+    public class Circle : Shape
     {
         #region Instance fields
         private double _x;

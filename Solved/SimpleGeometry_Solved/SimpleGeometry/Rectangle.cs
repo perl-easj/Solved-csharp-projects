@@ -1,22 +1,22 @@
 ﻿namespace SimpleGeometry
 {
-    class Rectangle : Shape
+    public class Rectangle : Shape
     {
         #region Instance fields
-        private double _x1;
-        private double _y1;
-        private double _x2;
-        private double _y2;
+        private double _xLowerLeft;
+        private double _yLowerLeft;
+        private double _xUpperRight;
+        private double _yUpperRight;
         #endregion
 
         #region Constructor
-        public Rectangle(double x1, double y1, double x2, double y2)
+        public Rectangle(double xLowerLeft, double yLowerLeft, double xUpperRight, double yUpperRight)
             : base("Rectangle")
         {
-            _x1 = x1;
-            _y1 = y1;
-            _x2 = x2;
-            _y2 = y2;
+            _xLowerLeft = xLowerLeft;
+            _yLowerLeft = yLowerLeft;
+            _xUpperRight = xUpperRight;
+            _yUpperRight = yUpperRight;
         }
         #endregion
 
@@ -25,7 +25,7 @@
         /// </summary>
         public override double Area
         {
-            get { return (_x2 - _x1) * (_y2 - _y1); }
+            get { return (_xUpperRight - _xLowerLeft) * (_yUpperRight - _yLowerLeft); }
         }
     }
 }

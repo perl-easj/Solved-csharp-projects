@@ -1,39 +1,29 @@
 ﻿namespace RolePlayV23
 {
     /// <summary>
-    /// This class represents the "defender" character type.
+    /// This class represents the Defender character type.
     /// </summary>
-    class Defender : Character
+    public class Defender : Character
     {
         public Defender(string name, int hitPoints, int minDamage, int maxDamage) 
             : base(name, hitPoints, minDamage, maxDamage)
         {
         }
 
-        public override void ReceiveDamage(int points)
+        /// <summary>
+        /// A Defender has a 45 % chance of having the received damage reduced.
+        /// </summary>
+        protected override int ReceiveDamageModifyChance
         {
-            int percentRoll = NumberGenerator.Next(0, 100);
+            get { return 45; }
+        }
 
-            if (percentRoll < 50)
-            {
-                // Reduced damage
-                int reducedPoints = points * 60 / 100; // Reduce by 40 %
-                _hitPoints = _hitPoints - reducedPoints;
-                string message = Name + " receives " + reducedPoints + " damage (REDUCED), and is down to " + _hitPoints + " hit points";
-                BattleLog.Save(message);
-            }
-            else
-            {
-                // Normal damage
-                _hitPoints = _hitPoints - points;
-                string message = Name + " receives " + points + " damage, and is down to " + _hitPoints + " hit points";
-                BattleLog.Save(message);
-            }
-
-            if (Dead)
-            {
-                BattleLog.Save(Name + " died!");
-            }
+        /// <summary>
+        /// If the damage is reduced, it is reduced by 50 %.
+        /// </summary>
+        protected override int CalculateModifiedReceivedDamage(int receivedDamage)
+        {
+            return receivedDamage / 2;
         }
     }
 }

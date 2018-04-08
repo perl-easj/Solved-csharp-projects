@@ -6,7 +6,7 @@ namespace SimpleGeometry
     /// This class is intended to act as
     /// a base class for geometric shapes
     /// </summary>
-    abstract class Shape
+    public abstract class Shape
     {
         private string _shapeName;
 
@@ -25,7 +25,6 @@ namespace SimpleGeometry
         public static double FindTotalArea(List<Shape> shapes)
         {
             double totalArea = 0;
-
             foreach (Shape s in shapes)
             {
                 totalArea = totalArea + s.Area;

@@ -11,6 +11,7 @@ namespace FilteringV10
 
             List<int> values = new List<int>() {12, 24, 9, 10, 6, 3, 45};
 
+            #region Single-condition filtering
             List<int> filteredValues = Filter.FilterValues(values, new FilterOddNumbers());
             Console.WriteLine("Filter odd numbers:");
             foreach (var value in filteredValues)
@@ -34,8 +35,10 @@ namespace FilteringV10
                 Console.Write($" {value} ");
             }
             Console.WriteLine();
+            #endregion
 
 
+            #region Multi-condition filtering
             List<IFilterCondition> filterConditions = new List<IFilterCondition>();
             filterConditions.Add(new FilterOddNumbers());
             filterConditions.Add(new FilterBelow20());
@@ -48,12 +51,15 @@ namespace FilteringV10
                 Console.Write($" {value} ");
             }
             Console.WriteLine();
+            #endregion
 
 
+            #region Filtering with function-type parameter
             // ...and now some slightly weird stuff...
             Console.WriteLine("Filtering using a function parameter:");
             Filter.FilterUsingFunctionArgument(values, value => (value % 2) != 0).ForEach(value => Console.Write($" {value} "));
-            Console.WriteLine();
+            Console.WriteLine(); 
+            #endregion
 
             // The LAST line of code should be ABOVE this line
         }

@@ -11,17 +11,11 @@ namespace WeaponFactory.Factories
     {
         public IWeapon Create(WeaponType type)
         {
-            switch (type)
-            {
-                case WeaponType.Meele:
-                    return new Dagger();
-                case WeaponType.Ranged:
-                    return new CrossBow();
-                case WeaponType.Magic:
-                    return new Wand();
-                default:
-                    throw new ArgumentException($"WeaponFactoryMedieval - no class available for weapon type {type}");
-            }
+            if (type == WeaponType.Melee) return new Dagger();
+            if (type == WeaponType.Ranged) return new CrossBow();
+            if (type == WeaponType.Magic) return new Wand();
+
+            throw new ArgumentException($"WeaponFactoryMedieval - no class available for weapon type {type}");
         }
     }
 }
