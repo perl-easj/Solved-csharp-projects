@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DataAccess.DBToolClasses;
 using DataAccess.DomainClasses;
 
@@ -62,8 +63,15 @@ namespace DataAccess.DataSource
 
         public T Read(int key)
         {
-            // Simple implementation
-            return _dbTool.GetRecord(key);
+            // Try to read a record - if unsuccessful, return null.
+            try
+            {
+                return _dbTool.GetRecord(key);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public void Update(int key, T data)
